@@ -1,0 +1,16 @@
+{% if namespace|trim('\\', 'left') %}
+## {{ namespace|trim('\\', 'left') }}
+{% else %}
+## {{ namespace }}
+{% endif %}
+
+
+{{ namespace.summary|raw }}
+
+{{ namespace.description|raw }}
+
+{% for class in namespace.classes|sort_asc %}
+{% if not class.abstract %}
+{% include 'class.md.twig' %}
+{% endif %}
+{% endfor %}

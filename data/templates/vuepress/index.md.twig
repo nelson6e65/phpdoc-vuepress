@@ -1,17 +1,17 @@
 # API
 
-::: tip {{ project.name }}
+::: tip {{ project.name|raw }}
 API Documentation
 :::
 
 {# {% include 'toc.md.twig' %} #}
 
-{% for class in project.indexes.classes|sort_asc %}
-{% if not class.abstract %}
-{% include 'class.md.twig' %}
-{% endif %}
+{% for namespace in project.indexes.namespaces|sort_asc  %}
+{% include 'namespace.md.twig' %}
 {% endfor %}
 
 
+
+
 --------
-> This document was automatically generated from source code comments on {{ "now"|date("Y-m-d") }} using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on {{ "now"|date("Y-m-d") }} using [phpDocumentor](http://www.phpdoc.org/) and **nelson6e65/phpdoc-vuepress**
