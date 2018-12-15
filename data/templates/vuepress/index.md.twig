@@ -1,6 +1,8 @@
-# {{ project.name|raw }}
+# API
 
-{% include 'toc.md.twig' %}
+{{ project.name|raw }}
+
+{# {% include 'toc.md.twig' %} #}
 
 {% for class in project.indexes.classes|sort_asc %}
 {% if not class.abstract %}

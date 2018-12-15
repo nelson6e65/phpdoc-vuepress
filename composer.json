@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cvuorinen\\PhpdocMarkdownPublic\\": "src"
+            "NelsonMartell\\PhpdocMarkdownPublic\\": "src"
         }
     }
 }
