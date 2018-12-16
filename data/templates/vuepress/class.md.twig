@@ -1,4 +1,4 @@
-### {{ class.name }} <Badge v-if="{{ class.abstract|default('false') }}" text="abstract" /> <Badge v-if="{{ class.final|default('false') }}" text="final" /> <Badge v-if="{{ class.deprecated|default('false') }}" text="deprecated" type="error"/> <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span> <kbd style="float: right; font-weight: normal;">class</kbd>
+### {{ class.name }} <Badge v-if="{{ class.abstract|default('false') }}" text="abstract" /> <Badge v-if="{{ class.final|default('false') }}" text="final" /> <Badge v-if="{{ class.deprecated|default('false') }}" text="deprecated" type="error"/> <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span>
 -----
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
@@ -38,13 +38,13 @@
 | ---:| --- |
 **Full name** | **`{{ class.FullyQualifiedStructuralElementName|trim('\\', 'left') }}`**
 {% if class.parent %}
- **Extends** | [{{ class.parent.FullyQualifiedStructuralElementName|trim('\\', 'left') }}](/api/classes.html#{{ class.parent.name|lower }}{{ class.parent.FullyQualifiedStructuralElementName|lower|replace('\\', '-') }}-class)
+ **Extends** | [{{ class.parent.FullyQualifiedStructuralElementName|trim('\\', 'left') }}](/api/classes.html#{{ class.parent.name|lower }}{{ class.parent.FullyQualifiedStructuralElementName|lower|replace('\\', '-') }})
 {% endif %}
 {% for iname, ishort in interfaces if ishort is not empty %}
 {% if loop.first -%}
 **Implements** |
 {%- endif -%}
- [{{ iname }}](/api/interfaces.html#{{ ishort|lower }}-{{ iname|lower|replace('\\', '-') }}-interface) {{- '<br />' -}}
+ [{{ iname }}](/api/interfaces.html#{{ ishort|lower }}-{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
 {% endfor %}
 
 
