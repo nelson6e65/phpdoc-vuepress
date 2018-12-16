@@ -11,9 +11,9 @@
 {{- method.response.types ? ': '~method.response.types|join('|') }}
 ```
 
-{{ method.summary|raw }}
+{{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
-{{ method.description|raw }}
+{{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
 {% if method.arguments is not empty %}
 ***Parameters:***
