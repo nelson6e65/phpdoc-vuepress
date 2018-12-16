@@ -1,2 +1,2 @@
-::: {% if method.deprecated %}warning {% else %}tip{% endif %} <span title="{{ class.name}}::{{method.name}}">{{ method.name }}</span> <Badge  text="deprecated" type="error" v-if="{{ method.deprecated|default('false') }}"/>
+::: tip <span title="{{ method.FullyQualifiedStructuralElementName|trim('\\') }}">{{ method.name }}</span> <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 -----
