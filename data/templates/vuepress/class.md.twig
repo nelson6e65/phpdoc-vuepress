@@ -24,8 +24,9 @@
 
 {% endif %}{# class.tags.see || class.tags.link #}
 
+#### Methods:
 {# Lista de métodos públicos y protegidos #}
-{% for method in class.methods %}
+{% for method in class.methods|sort_asc %}
 {% if method.visibility != 'private' %}
 {% include 'method.md.twig' %}
 {% endif %}
