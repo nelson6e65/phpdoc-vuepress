@@ -1,6 +1,5 @@
 {% include 'method-header.md.twig' %}
 
-
 {{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
 {# Method signature #}
@@ -35,17 +34,18 @@
 
 {% endif %}
 
+
 {% if method.tags.see is not empty or method.tags.link is not empty %}
 ***See Also:***
 
 {% for see in method.tags.see %}
-* {{ see.reference }} {% if see.description %}- {{ see.description|raw }}{% endif %}
+* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
 {% endfor %}
 
-{% for link in method.tags.link %}
-* {{ link.link }} {% if link.description and link.description != link.link %}- {{ link.description|raw }}{% endif %}
+{% for link in class.tags.link %}
+* [{{ link.description|default(link.link) }}]({{ link.link }})
 {% endfor %}
 
-{% endif %}{# method.tags.see || method.tags.link #}
+{% endif %}{# class.tags.see || class.tags.link #}
 
 :::

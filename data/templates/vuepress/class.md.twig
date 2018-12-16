@@ -5,7 +5,7 @@
 
 {{ class.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
-{# Class and parent interfaces #}
+{#- Class and parent interfaces -#}
 {% set interfaces = [] %}
 
 {% macro getRecursiveInterfaces(targetClass) %}
@@ -22,17 +22,12 @@
 {% endmacro %}
 
 {% import _self as self %}
-
 {% set interfacesText = self.getRecursiveInterfaces(class) %}
 
-{# Convert to array, sort and remove duplicates #}
+{#- Convert to array, sort and remove duplicates -#}
 {% for name in interfacesText|trim(', ')|split(',')|sort %}
     {%- set interfaces = interfaces|merge({ (name): (name|split('\\')|last) }) -%}
 {% endfor %}
-
-
-
-
 
 |     |     |
 | ---:| --- |
@@ -56,10 +51,10 @@
 
 
 {% if class.tags.see is not empty or class.tags.link is not empty %}
-**See Also:**
+***See Also:***
 
 {% for see in class.tags.see %}
-* {{ see.reference }} {% if see.description %}- {{ see.description|raw }}{% endif %}
+* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
 {% endfor %}
 
 {% for link in class.tags.link %}
