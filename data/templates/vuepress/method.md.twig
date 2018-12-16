@@ -21,7 +21,7 @@
 | Parameter | Type(s) | Description |
 |-----------|------|-------------|
 {% for argument in method.arguments %}
-| `{{ argument.name }}`| **`{{ argument.types ? argument.types|join('`** <br /> **`')|raw }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
+| `{{ argument.name }}` <Badge v-if="'{{ argument.default }}'" text="optional" type="warn"/> | **`{{ argument.types ? argument.types|join('`** <br /> **`')|raw }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
 {% endfor %}
 
 
