@@ -1,14 +1,14 @@
 ---
 editLink: false
 pageClass: phpdoc-api-generated-page
-prev: false
 ---
 
-# API: Introduction
+# Classes
 
-::: tip {{ project.name }}
-API Documentation for the {{ project.name }}
-:::
+{% for namespace in project.indexes.namespaces|sort_asc  %}
+{% include 'classes.md.twig' %}
+{% endfor %}
+
 
 --------
 _This document was automatically generated from source code comments using [phpDocumentor](http://www.phpdoc.org/)._
