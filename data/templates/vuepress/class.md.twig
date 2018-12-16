@@ -1,4 +1,4 @@
-### {{ class.name }} <Badge v-if="{{ class.abstract|default('false') }}" text="abstract" /> <Badge v-if="{{ class.final|default('false') }}" text="final" /> <Badge v-if="{{ class.deprecated|default('false') }}" text="deprecated" type="error"/> <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span>
+### {{ class.name }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ class.abstract }}'" text="abstract"/> <Badge v-if="'{{ class.final }}'" text="final" /> <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span>
 -----
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
