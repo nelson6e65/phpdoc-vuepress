@@ -1,5 +1,8 @@
 {% include 'method-header.md.twig' %}
 
+
+{{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
 {# Method signature #}
 ```php
 {{ method.visibility }}{% if method.static %} static{% endif %} {{ method.name }}( {% for argument in method.arguments %}
@@ -11,22 +14,19 @@
 {{- method.response.types ? ': '~method.response.types|join('|') }}
 ```
 
-{{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
-
-{{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
-
 {% if method.arguments is not empty %}
-***Parameters:***
-
 | Parameter | Type(s) | Description |
 |-----------|------|-------------|
 {% for argument in method.arguments %}
 | `{{ argument.name }}` <Badge v-if="'{{ argument.default }}'" text="optional" type="warn"/> | **`{{ argument.types ? argument.types|join('`** <br /> **`')|raw }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
 {% endfor %}
-
-
 {% endif %}{# method.arguments is not empty #}
 
+{% if method.description is not empty %}
+***Description:***
+
+{{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{% endif %}
 
 {% if method.response.description %}
 ***Return Value:***
