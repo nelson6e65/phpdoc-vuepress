@@ -1,17 +1,59 @@
-### {{ class.name }} <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span> <kbd style="float: right; font-weight: normal;">class</kbd>
+### {{ class.name }} <Badge v-if="{{ class.abstract|default('false') }}" text="abstract" /> <Badge v-if="{{ class.final|default('false') }}" text="final" /> <Badge v-if="{{ class.deprecated|default('false') }}" text="deprecated" type="error"/> <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span> <kbd style="float: right; font-weight: normal;">class</kbd>
 -----
 
-{{ class.summary|raw }}
+{{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
-{{ class.description|raw }}
+{{ class.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
-* Full name: `{{ class.FullyQualifiedStructuralElementName }}`
-{% if class.parent %}* Parent class: {{ class.parent.FullyQualifiedStructuralElementName }}
+{# Class and parent interfaces #}
+{% set interfaces = [] %}
+
+{% macro getRecursiveInterfaces(targetClass) %}
+  {%- import _self as self -%}
+
+  {%- if targetClass -%}
+    {%- for interface in targetClass.interfaces -%}
+    {{- interface.FullyQualifiedStructuralElementName|trim('\\', 'left') -}},
+    {%- endfor -%}
+
+    {{- self.getRecursiveInterfaces(targetClass.parent) -}}
+
+  {%- endif -%}
+{% endmacro %}
+
+{% import _self as self %}
+
+{% set interfacesText = self.getRecursiveInterfaces(class) %}
+
+{# Convert to array, sort and remove duplicates #}
+{% for name in interfacesText|trim(', ')|split(',')|sort %}
+    {%- set interfaces = interfaces|merge({ (name): (name|split('\\')|last) }) -%}
+{% endfor %}
+
+
+
+
+
+|     |     |
+| ---:| --- |
+**Full name** | **`{{ class.FullyQualifiedStructuralElementName|trim('\\', 'left') }}`**
+{% if class.parent %}
+ **Extends** | [{{ class.parent.FullyQualifiedStructuralElementName|trim('\\', 'left') }}](/api/classes.html#{{ class.parent.name|lower }}{{ class.parent.FullyQualifiedStructuralElementName|lower|replace('\\', '-') }}-class)
 {% endif %}
-{% if class.interfaces is not empty %}* This class implements: {{ class.interfaces|join(', ')|raw }}
-{% endif %}
-{% if class.deprecated %}* **Warning:** this class is **deprecated**. This means that this class will likely be removed in a future version.
-{% endif %}
+{% for iname, ishort in interfaces if ishort is not empty %}
+{% if loop.first -%}
+**Implements** |
+{%- endif -%}
+ [{{ iname }}](/api/interfaces.html#{{ ishort|lower }}-{{ iname|lower|replace('\\', '-') }}-interface) {{- '<br />' -}}
+{% endfor %}
+
+
+{% for author in class.tags.author %}
+{% if loop.first %}- **Authors:**{% endif %}
+
+  - {{ author.description }}
+{%- endfor %}
+
 
 {% if class.tags.see is not empty or class.tags.link is not empty %}
 **See Also:**
@@ -19,13 +61,14 @@
 {% for see in class.tags.see %}
 * {{ see.reference }} {% if see.description %}- {{ see.description|raw }}{% endif %}
 {% endfor %}
+
 {% for link in class.tags.link %}
-* {{ link.link }} {% if link.description and link.description != link.link %}- {{ link.description|raw }}{% endif %}
+* [{{ link.description|default(link.link) }}]({{ link.link }})
 {% endfor %}
 
 {% endif %}{# class.tags.see || class.tags.link #}
 
-#### Methods:
+#### <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span> Methods:
 {# Lista de métodos públicos y protegidos #}
 {% for method in class.methods|sort_asc %}
 {% if method.visibility != 'private' %}
