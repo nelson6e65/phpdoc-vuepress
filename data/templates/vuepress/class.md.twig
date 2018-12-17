@@ -14,7 +14,7 @@
 
   {%- if targetClass -%}
     {%- for interface in targetClass.interfaces -%}
-    {{- interface.FullyQualifiedStructuralElementName|trim('\\', 'left') -}},
+    {{- interface|trim('\\', 'left') -}},
     {%- endfor -%}
 
     {{- self.getRecursiveInterfaces(targetClass.parent) -}}
@@ -32,9 +32,9 @@
 
 |     |     |
 | ---:| --- |
-**Full name** | **`{{ class.FullyQualifiedStructuralElementName|trim('\\', 'left') }}`**
+**Full name** | **`{{ class|trim('\\', 'left') }}`**
 {% if class.parent %}
- **Extends** | [{{ class.parent.FullyQualifiedStructuralElementName|trim('\\', 'left') }}](/api/classes.html#{{ class.parent.name|lower }}{{ class.parent.FullyQualifiedStructuralElementName|lower|replace('\\', '-') }})
+ **Extends** | [{{ class.parent|trim('\\', 'left') }}](/api/classes.html#{{ class.parent.name|lower }}{{ class.parent|lower|replace('\\', '-') }})
 {% endif %}
 {% for iname, ishort in interfaces if ishort is not empty %}
 {% if loop.first -%}
