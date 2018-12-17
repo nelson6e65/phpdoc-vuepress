@@ -1,6 +1,5 @@
 
-### {{ interface.name }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <span style="display: none;">{{ interface.FullyQualifiedStructuralElementName }}</span>
------
+### {{ interface|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/>
 
 {{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
@@ -35,7 +34,7 @@
 {% if loop.first -%}
 **Extends** |
 {%- endif -%}
- [{{ iname }}](/api/interfaces.html#{{ ishort|lower }}-{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
+ [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
 {% endfor %}
 
 {% for author in class.tags.author %}

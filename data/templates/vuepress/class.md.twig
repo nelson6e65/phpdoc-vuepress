@@ -1,6 +1,5 @@
 
-### {{ class.name }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ class.abstract }}'" text="abstract"/> <Badge v-if="'{{ class.final }}'" text="final" /> <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span>
------
+### {{ class|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ class.abstract }}'" text="abstract"/> <Badge v-if="'{{ class.final }}'" text="final" />
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
@@ -34,13 +33,14 @@
 | ---:| --- |
 **Full name** | **`{{ class|trim('\\', 'left') }}`**
 {% if class.parent %}
- **Extends** | [{{ class.parent|trim('\\', 'left') }}](/api/classes.html#{{ class.parent.name|lower }}{{ class.parent|lower|replace('\\', '-') }})
+ **Extends** | [{{ class.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ class.parent.name }}</span>](/api/classes.html#
+  {{- class.parent|trim('\\')|lower|replace('\\', '-') }})
 {% endif %}
 {% for iname, ishort in interfaces if ishort is not empty %}
 {% if loop.first -%}
 **Implements** |
 {%- endif -%}
- [{{ iname }}](/api/interfaces.html#{{ ishort|lower }}-{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
+ [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
 {% endfor %}
 
 
@@ -84,9 +84,8 @@
   {%- endif %}
 
 {%- if method.visibility != 'private' %}
-- [{{ method.parent|trim('\\') -}}](/api/{{ parent_location }}.html#
-
-  {{- method.parent.name|lower -}}{{- method.parent|lower|replace('\\', '-') -}}
+- [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/{{ parent_location }}.html#
+  {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
   )::
   {{- method.name }} <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 {% endif %}
