@@ -1,6 +1,6 @@
 {
     "name": "nelson6e65/phpdoc-vuepress",
-    "description": "phpDocumentor template that generates Markdown documentation of the public API",
+    "description": "phpDocumentor template that generates API documentation pages for a VuePress project.",
     "keywords" : [ "PHPDoc", "phpDocumentor", "Documentation", "Markdown", "VuePress" ],
     "homepage" : "https://github.com/nelson6e65",
     "license": "MIT",

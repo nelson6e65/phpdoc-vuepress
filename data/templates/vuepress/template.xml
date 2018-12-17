@@ -4,7 +4,7 @@
   <email>nelson6e65@gmail.com</email>
   <version>1.0.0</version>
   <copyright>2018 Nelson Martell</copyright>
-  <description>.</description>
+  <description>Generate API documentation pages in Markdown format for VuePress.</description>
   <transformations>
     <transformation writer="twig" source="templates/vuepress/index.md.twig" artifact="README.md" />
     <transformation writer="twig" source="templates/vuepress/index-classes.md.twig" artifact="classes.md" />
