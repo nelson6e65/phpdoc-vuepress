@@ -1,29 +1,39 @@
-# phpDocumentor markdown-public template
+# phpDocumentor VuePress template
 
-[phpDocumentor template](http://www.phpdoc.org/docs/latest/getting-started/changing-the-look-and-feel.html) that generates Markdown documentation of only the public API. It will skip all abstract classes and non-public methods.
+[phpDocumentor template](http://www.phpdoc.org/docs/latest/getting-started/changing-the-look-and-feel.html) that generates [VuePress](https://vuepress.vuejs.org) documentation of your API.
 
-The main use-case for this template is to generate simple and nice looking usage documentation, that can then be published on GitHub.
+The main use-case for this template is to generate simple and nice looking API documentation pages to be integrated in a VuePress project.
 
-For example, a small library can document it's public API in DocBlock comments, use this template to generate the Markdown documentation and then commit it to GitHub with the library to easily create a nice looking documentation for other developers to see.
+> Only tested in the default theme of VuePres.
 
-Example of documentation generated with this template: https://github.com/cvuorinen/raspicam-php/tree/master/docs
+Example of documentation generated with this template: https://nelson6e65.github.io/php_nml/api/
+
+> ** Special note:** This template is based on Markdown template created by [@cvuorinen](https://github.com/cvuorinen) in [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public).
+
 
 ## Installation
 
 Install with composer:
 
 ```bash
-composer require cvuorinen/phpdoc-markdown-public
+composer require --dev nelson6e65/phpdoc-vuepress
 ```
+
+
+> At the moment, this package has not PHP dependencies for usage,
+
+
 
 ## Usage
 
-Run phpDocumentor and set template as `vendor/cvuorinen/phpdoc-markdown-public/data/templates/markdown-public`.
+> Is highly recommended to use a global installation of `phpdoc`, vua composer global (`composer global require --dev phpdocumentor/phpdocumentor`) or the `.phar` file.
+
+Run phpDocumentor and set template as `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress`.
 
 **Example using command-line arguments:**
 
 ```bash
-./vendor/bin/phpdoc --directory=src/ --target=docs/ --template="vendor/cvuorinen/phpdoc-markdown-public/data/templates/markdown-public" --title="My Project Documentation"
+phpdoc --directory=src/ --target=docs/api/ --template="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" --title="My Project Documentation"
 ```
 
 More information about the available arguments can be found at [running phpDocumentor](http://www.phpdoc.org/docs/latest/guides/running-phpdocumentor.html).
@@ -37,19 +47,60 @@ Add a file called `phpdoc.xml` with the following content to the root of your pr
 <phpdoc>
     <title>My Project Documentation</title>
     <parser>
-        <target>build</target>
+      <target>output/doc</target>
     </parser>
     <transformer>
-        <target>docs</target>
+      <target>docs/api</target>
     </transformer>
     <transformations>
-        <template name="vendor/cvuorinen/phpdoc-markdown-public/data/templates/markdown-public" />
+        <template name="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" />
     </transformations>
     <files>
         <directory>src</directory>
-        <ignore>test/*</ignore>
     </files>
 </phpdoc>
 ```
 
 More information about [configuring phpDocumentor](http://www.phpdoc.org/docs/latest/references/configuration.html).
+
+
+### Configure routes in VuePress
+
+**Example for your `.vuepress/config.js` file:**
+
+```js
+module.exports = {  
+  themeConfig: {
+    nav: [
+      { text: 'Guide', link: '/guide/' },
+      { text: 'API', link: '/api/' }, // Navbar link to API
+    ],
+
+    sidebar: [
+      {
+        title: 'Guide',
+        collapsable: false,
+        children: [
+          '/guide/',
+          // ... other pages
+        ]
+      },      
+      { // Sidebar Links to API
+        title: 'API',
+        collapsable: false,
+        children: [
+          '/api/', // README.ms
+          '/api/classes', // classes.md
+          '/api/interfaces', // interfaces.md
+        ]
+      }
+    ],
+
+    docsDir: 'docs'
+  }
+}
+```
+
+> Read mor about recommended directory structure at https://vuepress.vuejs.org/guide/directory-structure.html
+
+**Recommendation:** You can add the API route to your `.gitignore` file, since this files are auto-generated with the `phpdoc` tool.
