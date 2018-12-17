@@ -1,2 +1,11 @@
-::: tip <span title="{{ method.FullyQualifiedStructuralElementName|trim('\\') }}">{{ method.name }}</span> <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+:::
+{%- if method.visibility == 'protected' %}
+    {{- 'warning ' -}}
+{% elseif method.visibility == 'public' %}
+    {{- 'tip ' -}}
+{% else %}
+    {{- 'danger ' -}}
+{% endif -%}
+
+<span title="{{ method.FullyQualifiedStructuralElementName|trim('\\') }}">{{ method.name }}</span> <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 -----
