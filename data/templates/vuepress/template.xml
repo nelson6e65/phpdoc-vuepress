@@ -12,6 +12,5 @@
   </transformations>
   <parameters>
     <parameter key="twig-debug">true</parameter>
-    <parameter key="twig-extension">Cvuorinen\PhpdocMarkdownPublic\Extension\TwigMarkdownAnchorLink</parameter>
   </parameters>
 </template>

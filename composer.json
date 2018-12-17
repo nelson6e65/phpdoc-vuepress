@@ -10,12 +10,12 @@
             "email": "nelson6e65@gmail.com"
         }
     ],
-    "require": {
+    "require-dev": {
         "phpdocumentor/phpdocumentor": "~2.8"
     },
     "autoload": {
         "psr-4": {
-            "NelsonMartell\\PhpdocMarkdownPublic\\": "src"
+            "NelsonMartell\\VuePress\\": "src"
         }
     }
 }
