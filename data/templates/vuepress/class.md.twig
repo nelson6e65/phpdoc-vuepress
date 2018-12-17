@@ -74,8 +74,20 @@
 
 #### <span style="display: none;">{{ class }}</span> Inherited methods:
 {# Lista de métodos públicos y protegidos #}
-{% for method in class.inheritedMethods %}
-{% if method.visibility != 'private' %}
-- {{ method.parent|trim('\\') }}::{{ method.name }} <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+{% for method in class.inheritedMethods -%}
+  {%- if method.parent in project.indexes.classes %}
+    {%- set parent_location = 'classes' %}
+  {%- elseif method.parent in project.indexes.interfaces %}
+    {%- set parent_location = 'interfaces' %}
+  {%- else %}
+    {%- set parent_location = 'traits' %}
+  {%- endif %}
+
+{%- if method.visibility != 'private' %}
+- [{{ method.parent|trim('\\') -}}](/api/{{ parent_location }}.html#
+
+  {{- method.parent.name|lower -}}{{- method.parent|lower|replace('\\', '-') -}}
+  )::
+  {{- method.name }} <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 {% endif %}
 {% endfor %}
