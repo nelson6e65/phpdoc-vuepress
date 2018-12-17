@@ -1,0 +1,66 @@
+### {{ interface.name }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <span style="display: none;">{{ interface.FullyQualifiedStructuralElementName }}</span>
+-----
+
+{{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+{{ interface.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+{#- Parents -#}
+{% set parents = [] %}
+
+{% macro getRecursiveParents(targetInterface) %}
+  {%- import _self as self -%}
+
+  {%- if targetInterface -%}
+    {{- targetInterface.parent|join(',') -}}
+    {%- for i in targetInterface.parent -%}
+      {{- self.getRecursiveParents(i) -}}
+    {%- endfor -%}
+  {%- endif -%}
+{% endmacro %}
+
+{% import _self as self %}
+{% set parentsText = self.getRecursiveParents(interface) %}
+
+{#- Convert to array, sort and remove duplicates -#}
+{% for name in parentsText|trim(', ')|split(',')|sort %}
+    {%- set parents = parents|merge({ (name|trim('\\')): (name|split('\\')|last) }) -%}
+{% endfor %}
+
+|     |     |
+| ---:| --- |
+**Full name** | **`{{ interface.fullyQualifiedStructuralElementName|trim('\\', 'left') }}`**
+{% for iname, ishort in parents if ishort is not empty %}
+{% if loop.first -%}
+**Extends** |
+{%- endif -%}
+ [{{ iname }}](/api/interfaces.html#{{ ishort|lower }}-{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
+{% endfor %}
+
+{% for author in class.tags.author %}
+{% if loop.first %}- **Authors:**{% endif %}
+
+  - {{ author.description }}
+{%- endfor %}
+
+
+{% if class.tags.see is not empty or class.tags.link is not empty %}
+***See Also:***
+
+{% for see in class.tags.see %}
+* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
+{% endfor %}
+
+{% for link in class.tags.link %}
+* [{{ link.description|default(link.link) }}]({{ link.link }})
+{% endfor %}
+
+{% endif %}{# class.tags.see || class.tags.link #}
+
+#### <span style="display: none;">{{ class.FullyQualifiedStructuralElementName }}</span> Methods:
+{# Lista de métodos públicos y protegidos #}
+{% for method in interface.methods|sort_asc %}
+{% if method.visibility != 'private' %}
+{% include 'method.md.twig' %}
+{% endif %}
+{% endfor %}
