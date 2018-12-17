@@ -13,7 +13,7 @@
   {%- import _self as self -%}
 
   {%- if targetInterface -%}
-    {{- targetInterface.parent|join(',') -}}
+    {{- targetInterface.parent|join(',') -}},
     {%- for i in targetInterface.parent -%}
       {{- self.getRecursiveParents(i) -}}
     {%- endfor -%}
