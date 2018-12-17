@@ -1,7 +1,0 @@
-{% for interface in namespace.interfaces|sort_asc %}
-{% if loop.first %}
-{% include 'namespace.md.twig' %}
-{% endif %}
-
-{% include 'interface.md.twig' %}
-{% endfor %}

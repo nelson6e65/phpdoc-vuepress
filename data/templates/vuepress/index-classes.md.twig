@@ -6,7 +6,13 @@ pageClass: phpdoc-api-generated-page
 # Classes
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
-{% include 'classes.md.twig' %}
+    {% for class in namespace.classes|sort_asc %}
+        {% if loop.first %}
+            {% include 'namespace.md.twig' %}
+        {% endif %}
+
+        {% include 'class.md.twig' %}
+    {% endfor %}
 {% endfor %}
 
 

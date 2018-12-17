@@ -1,7 +1,0 @@
-{% for class in namespace.classes|sort_asc %}
-{% if loop.first %}
-{% include 'namespace.md.twig' %}
-{% endif %}
-
-{% include 'class.md.twig' %}
-{% endfor %}
