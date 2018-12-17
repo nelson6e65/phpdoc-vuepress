@@ -1,5 +1,4 @@
-
-### {{ class|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ class.abstract }}'" text="abstract"/> <Badge v-if="'{{ class.final }}'" text="final" />
+## {{ class|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ class.abstract }}'" text="abstract"/> <Badge v-if="'{{ class.final }}'" text="final" />
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
@@ -29,9 +28,8 @@
     {%- set interfaces = interfaces|merge({ (name): (name|split('\\')|last) }) -%}
 {% endfor %}
 
-|     |     |
-| ---:| --- |
-**Full name** | **`{{ class|trim('\\', 'left') }}`**
+| Name | {{ class.name }} |
+| ----:|:---------------- |
 {% if class.parent %}
  **Extends** | [{{ class.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ class.parent.name }}</span>](/api/classes.html#
   {{- class.parent|trim('\\')|lower|replace('\\', '-') }})

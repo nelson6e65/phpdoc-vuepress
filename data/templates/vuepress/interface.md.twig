@@ -1,5 +1,4 @@
-
-### {{ interface|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/>
+## {{ interface|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/>
 
 {{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
@@ -27,9 +26,8 @@
     {%- set parents = parents|merge({ (name|trim('\\')): (name|split('\\')|last) }) -%}
 {% endfor %}
 
-|     |     |
-| ---:| --- |
-**Full name** | **`{{ interface.fullyQualifiedStructuralElementName|trim('\\', 'left') }}`**
+| Name | {{ interface.name }} |
+| ----:|:-------------------- |
 {% for iname, ishort in parents if ishort is not empty %}
 {% if loop.first -%}
 **Extends** |

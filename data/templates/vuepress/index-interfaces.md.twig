@@ -6,14 +6,10 @@ pageClass: phpdoc-api-generated-page
 # Interfaces
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
-    {% for interface in namespace.interfaces|sort_asc %}
-        {% if loop.first %}
-            {% include 'namespace.md.twig' %}
-        {% endif %}
-
-        {% include 'interface.md.twig' %}
-    {% endfor %}
-{% endfor %}
+    {%- for interface in namespace.interfaces|sort_asc %}
+        {%- include 'interface.md.twig' %}
+    {%- endfor %}
+{%- endfor %}
 
 
 --------
