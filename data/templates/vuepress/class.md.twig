@@ -6,6 +6,8 @@
 
 {#- Class and parent interfaces -#}
 {% set interfaces = [] %}
+{#- Class and parent traits -#}
+{% set traits = [] %}
 
 {% macro getRecursiveInterfaces(targetClass) %}
   {%- import _self as self -%}
@@ -20,12 +22,34 @@
   {%- endif -%}
 {% endmacro %}
 
+{% macro getRecursiveTraits(targetClass, includeTraitsInTraits) %}
+  {%- import _self as self -%}
+
+  {%- if targetClass -%}
+    {{- targetClass.usedTraits|join(',') -}},
+
+    {{- self.getRecursiveTraits(targetClass.parent, includeTraitsInTraits) -}}
+
+    {%- if includeTraitsInTraits -%}
+      {%- for trait in targetClass.usedTraits -%}
+        {{- self.getRecursiveTraits(trait, includeTraitsInTraits) -}}
+      {%- endfor -%}
+    {%- endif -%}
+
+  {%- endif -%}
+{% endmacro %}
+
 {% import _self as self %}
 {% set interfacesText = self.getRecursiveInterfaces(class) %}
+{% set traitsText = self.getRecursiveTraits(class, false) %}
 
 {#- Convert to array, sort and remove duplicates -#}
 {% for name in interfacesText|trim(', ')|split(',')|sort %}
     {%- set interfaces = interfaces|merge({ (name): (name|split('\\')|last) }) -%}
+{% endfor %}
+
+{% for name in traitsText|trim(', ')|split(',')|sort %}
+    {%- set traits = traits|merge({ (name): (name|split('\\')|last) }) -%}
 {% endfor %}
 
 | Name | {{ class.name }} |
@@ -41,6 +65,12 @@
  [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
 {% endfor %}
 
+{% for tName, tShort in traits if tShort is not empty %}
+{% if loop.first -%}
+**Uses** |
+{%- endif -%}
+ [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#{{ tShort|lower|replace('\\', '-') }}) {{- '<br />' -}}
+{% endfor %}
 
 {% for author in class.tags.author %}
 {% if loop.first %}- **Authors:**{% endif %}
