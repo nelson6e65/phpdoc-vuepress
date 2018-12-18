@@ -85,6 +85,7 @@
 - [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/{{ parent_location }}.html#
   {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
   )::
-  {{- method.name }} <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }}
+  <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 {% endif %}
 {% endfor %}

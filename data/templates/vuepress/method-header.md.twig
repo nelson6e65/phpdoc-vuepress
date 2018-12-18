@@ -8,5 +8,6 @@
     {{- 'danger ' -}}
 {% endif -%}
 
-<span title="{{ method.FullyQualifiedStructuralElementName|trim('\\') }}">{{ method.name }}</span> <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+    {{ include('method-anchor-ref.md.twig') }}
+    {{- method.name }} <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 -----
