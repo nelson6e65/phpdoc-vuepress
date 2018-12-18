@@ -1,8 +1,8 @@
 {
     "name": "nelson6e65/phpdoc-vuepress",
-    "description": "phpDocumentor template that generates API documentation pages for a VuePress project.",
-    "keywords" : [ "PHPDoc", "phpDocumentor", "Documentation", "Markdown", "VuePress" ],
-    "homepage" : "https://github.com/nelson6e65",
+    "description": "phpDocumentor template for VuePress.",
+    "keywords" : [ "PHPDoc", "PHP", "phpDocumentor", "Documentation", "Markdown", "VuePress" ],
+    "homepage" : "https://github.com/nelson6e65/phpdoc-vuepress",
     "license": "MIT",
     "authors": [
         {
@@ -17,5 +17,10 @@
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "^2.9"
-    }
+    },
+    "extra": {
+		"branch-alias": {
+			"dev-master": "v1.0.x-dev"
+		}
+	}
 }
