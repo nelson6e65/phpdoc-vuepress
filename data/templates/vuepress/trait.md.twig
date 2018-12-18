@@ -1,4 +1,4 @@
-## {{ trait|trim('\\') }} <Badge v-if="'{{ trait.deprecated }}'" text="deprecated" type="error"/>
+## {{ trait|trim('\\') }} {{ include('badges.md.twig', { elem: trait }) }}
 
 {{ trait.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
@@ -74,8 +74,7 @@
 - [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/traits.html#
   {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
   )::
-  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }}
-  <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }} {{ include('badges.md.twig', { elem: method }) }}
 {% endif %}
 {% else %}
 > This trait has not inherited methods.

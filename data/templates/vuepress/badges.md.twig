@@ -1,0 +1,23 @@
+{{- ' ' -}}
+
+{%- if elem.abstract -%}
+    <Badge text="abstract"/>
+{%- endif -%}
+
+{%- if elem.final -%}
+    <Badge text="final"/>{{-' '}}
+{%- endif -%}
+
+{%- if elem.static -%}
+    <Badge text="static" type="warn"/>{{-' '}}
+{%- endif -%}
+
+{% if elem.deprecated -%}
+    <Badge text="deprecated" type="error"/>
+{%- endif -%}
+
+{%- if elem.default -%}
+    <Badge text="optional" type="warn"/>{{-' '}}
+{%- endif -%}
+
+{{- ' ' -}}

@@ -17,7 +17,7 @@
 | Parameter | Type(s) | Description |
 |-----------|------|-------------|
 {% for argument in method.arguments %}
-| `{{ argument.name }}` <Badge v-if="'{{ argument.default }}'" text="optional" type="warn"/> | **`{{ argument.types ? argument.types|join('`** <br /> **`')|raw }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
+| `{{ argument.name }}` {{ include('badges.md.twig', { elem: argument }) }} | **`{{ argument.types ? argument.types|join('`** <br /> **`')|raw }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
 {% endfor %}
 {% endif %}{# method.arguments is not empty #}
 

@@ -1,4 +1,4 @@
-## {{ class|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ class.abstract }}'" text="abstract"/> <Badge v-if="'{{ class.final }}'" text="final" />
+## {{ class|trim('\\') }} {{ include('badges.md.twig', { elem: class }) }}
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
@@ -119,8 +119,8 @@
 - [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/{{ parent_location }}.html#
   {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
   )::
-  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }}
-  <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) -}}
+  {{ include('badges.md.twig', { elem: method }) }}
 {% endif %}
 {% else %}
 > This class has not inherited methods.

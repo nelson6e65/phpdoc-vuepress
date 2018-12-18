@@ -1,4 +1,4 @@
-## {{ interface|trim('\\') }} <Badge v-if="'{{ class.deprecated }}'" text="deprecated" type="error"/>
+## {{ interface|trim('\\') }} {{ include('badges.md.twig', { elem: interface }) }}
 
 {{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
