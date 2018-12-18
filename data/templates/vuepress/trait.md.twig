@@ -1,0 +1,82 @@
+## {{ trait|trim('\\') }} <Badge v-if="'{{ trait.deprecated }}'" text="deprecated" type="error"/>
+
+{{ trait.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+{{ trait.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+{#- Used traits -#}
+{% set usedTraits = [] %}
+
+{% macro getRecursiveTraits(targetTrait) %}
+  {%- import _self as self -%}
+
+  {%- if targetTrait -%}
+    {{- targetTrait.usedTraits|join(',') -}},
+
+    {%- for trait in targetTrait.usedTraits -%}
+      {{- self.getRecursiveTraits(trait) -}}
+    {%- endfor -%}
+  {%- endif -%}
+{% endmacro %}
+
+{% import _self as self %}
+{% set usedTraitsText = self.getRecursiveTraits(trait) %}
+
+{#- Convert to array, sort and remove duplicates -#}
+{% for name in usedTraitsText|trim(', ')|split(',')|sort %}
+    {%- set usedTraits = usedTraits|merge({ (name): (name|split('\\')|last) }) -%}
+{% endfor %}
+
+| Name | {{ trait.name }} |
+| ----:|:---------------- |
+{% for tName, tShort in usedTraits if tShort is not empty %}{# FIXME #}
+{% if loop.first -%}
+**Uses** |
+{%- endif -%}
+ [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#{{ tShort|lower|replace('\\', '-') }}) {{- '<br />' -}}
+{% endfor %}
+
+
+{% for author in trait.tags.author %}
+{% if loop.first %}- **Authors:**{% endif %}
+
+  - {{ author.description }}
+{%- endfor %}
+
+
+{% if trait.tags.see is not empty or trait.tags.link is not empty %}
+***See Also:***
+
+{% for see in trait.tags.see %}
+* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
+{% endfor %}
+
+{% for link in trait.tags.link %}
+* [{{ link.description|default(link.link) }}]({{ link.link }})
+{% endfor %}
+
+{% endif %}{# class.tags.see || class.tags.link #}
+
+#### <span style="display: none;">{{ trait }}</span> Methods:
+{# Lista de métodos públicos y protegidos #}
+{% for method in trait.methods|sort_asc %}
+{% if method.visibility != 'private' %}
+{% include 'method.md.twig' %}
+{% endif %}
+{% else %}
+> This trait has not methods.
+{% endfor %}
+
+#### <span style="display: none;">{{ trait }}</span> Inherited methods:
+{# Lista de métodos públicos y protegidos #}
+{% for method in trait.inheritedMethods -%}
+{%- if method.visibility != 'private' %}
+- [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/traits.html#
+  {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
+  )::
+  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }}
+  <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
+{% endif %}
+{% else %}
+> This trait has not inherited methods.
+{% endfor %}
