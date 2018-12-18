@@ -5,7 +5,7 @@
 {# Method signature #}
 ```php
 {{ method.visibility }}{% if method.static %} static{% endif %} {{ method.name }}( {% for argument in method.arguments %}
-{{- argument.types|default(['mixed'])|join('|')~' ' }}
+{{- argument.types|default(['mixed'])|sort_asc|join('|')~' ' }}
 {{- argument.byReference ? '&' }}
 {{- argument.name }}{% if argument.default %} = {{ argument.default|raw }}{% endif %}
 {%- if not loop.last %}, {% endif -%}
@@ -17,7 +17,7 @@
 | Parameter | Type(s) | Description |
 |-----------|------|-------------|
 {% for argument in method.arguments %}
-| `{{ argument.name }}` {{ include('badges.md.twig', { elem: argument }) }} | **`{{ argument.types|default(['mixed'])|join('`** <br /> **`')|raw  }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
+| `{{ argument.name }}` {{ include('badges.md.twig', { elem: argument }) }} | **`{{ argument.types|default(['mixed'])|sort_asc|join('`** <br /> **`')|raw  }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
 {% endfor %}
 {% endif %}{# method.arguments is not empty #}
 
