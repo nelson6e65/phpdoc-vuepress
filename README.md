@@ -4,11 +4,11 @@
 
 The main use-case for this template is to generate simple and nice looking API documentation pages to be integrated in a VuePress project.
 
-> Only tested in the default theme of VuePres.
+> Only tested in the default theme of VuePress.
 
 Example of documentation generated with this template: https://nelson6e65.github.io/php_nml/api/
 
-> ** Special note:** This template is based on Markdown template created by [@cvuorinen](https://github.com/cvuorinen) in [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public).
+> **Special note:** This template is based on Markdown template created by [@cvuorinen](https://github.com/cvuorinen) in [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public).
 
 
 ## Installation
@@ -92,6 +92,7 @@ module.exports = {
           '/api/', // README.ms
           '/api/classes', // classes.md
           '/api/interfaces', // interfaces.md
+          '/api/traits', // interfaces.md
         ]
       }
     ],
