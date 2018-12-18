@@ -69,7 +69,7 @@
 {% if loop.first -%}
 **Uses** |
 {%- endif -%}
- [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#{{ tShort|lower|replace('\\', '-') }}) {{- '<br />' -}}
+ [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#{{ tName|trim('\\')|lower|replace('\\', '-') }}) {{- '<br />' -}}
 {% endfor %}
 
 {% for author in class.tags.author %}
