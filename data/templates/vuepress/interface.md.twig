@@ -61,4 +61,6 @@
 {% if method.visibility != 'private' %}
 {% include 'method.md.twig' %}
 {% endif %}
+{% else %}
+> This interface has not methods.
 {% endfor %}

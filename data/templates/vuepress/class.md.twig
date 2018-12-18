@@ -98,6 +98,8 @@
 {% if method.visibility != 'private' %}
 {% include 'method.md.twig' %}
 {% endif %}
+{% else %}
+> This class has not methods.
 {% endfor %}
 
 #### <span style="display: none;">{{ class }}</span> Inherited methods:
@@ -118,4 +120,6 @@
   {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }}
   <Badge v-if="'{{ method.deprecated }}'" text="deprecated" type="error"/> <Badge v-if="'{{ method.abstract }}'" text="abstract"/> <Badge v-if="'{{ method.final }}'" text="final" />
 {% endif %}
+{% else %}
+> This class has not inherited methods.
 {% endfor %}
