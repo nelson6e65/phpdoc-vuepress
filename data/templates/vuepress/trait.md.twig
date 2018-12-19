@@ -57,7 +57,7 @@
 
 {% endif %}{# class.tags.see || class.tags.link #}
 
-#### <span style="display: none;">{{ trait }}</span> Methods:
+### <span style="display: none;">{{ trait }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in trait.methods|sort_asc %}
 {% if method.visibility != 'private' %}
@@ -67,7 +67,7 @@
 > This trait has not methods.
 {% endfor %}
 
-#### <span style="display: none;">{{ trait }}</span> Inherited methods:
+#### <span style="display: none;">{{ trait }}</span> Inherited methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in trait.inheritedMethods -%}
 {%- if method.visibility != 'private' %}
@@ -78,4 +78,14 @@
 {% endif %}
 {% else %}
 > This trait has not inherited methods.
+{% endfor %}
+
+{% set propertiesList = [] %}
+### <span style="display: none;">{{ trait }}</span> Properties
+{# Lista de propiedades públicas y protegidas #}
+{% for property in trait.properties|merge(trait.magicProperties)|sort_asc if property.visibility != 'private' %}
+{% set propertiesList = propertiesList|merge([property.name]) %}
+{% include 'property.md.twig' %}
+{% else %}
+> This trait has not properties.
 {% endfor %}

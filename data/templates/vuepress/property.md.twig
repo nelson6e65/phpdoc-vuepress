@@ -1,0 +1,50 @@
+
+:::
+{%- if property.visibility == 'protected' %}
+    {{- 'warning ' -}}
+{% elseif property.visibility == 'public' %}
+    {{- 'tip ' -}}
+{% else %}
+    {{- 'danger ' -}}
+{% endif -%}
+
+    {{ include('property-anchor-ref.md.twig') }}
+    {{- '$' ~ property.name }} {{ include('badges.md.twig', { elem: property }) }}
+-----
+
+{# property signature #}
+```php
+{{ property.visibility }}{% if property.static %} static{% endif %} {{ property.types|default(['mixed'])|join('|')}} ${{ property.name }}
+{%- if property.default %} = {{ property.default|raw }}{% endif %};
+```
+
+{{ property.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+{% if property.description is not empty %}
+***Description:***
+
+{{ property.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{% endif %}
+
+{% if method.response.description %}
+***Return Value:***
+
+{{ method.response.description|raw }}
+
+{% endif %}
+
+
+{% if method.tags.see is not empty or method.tags.link is not empty %}
+***See Also:***
+
+{% for see in method.tags.see %}
+* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
+{% endfor %}
+
+{% for link in class.tags.link %}
+* [{{ link.description|default(link.link) }}]({{ link.link }})
+{% endfor %}
+
+{% endif %}{# class.tags.see || class.tags.link #}
+
+:::

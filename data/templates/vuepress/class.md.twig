@@ -93,7 +93,7 @@
 {% endif %}{# class.tags.see || class.tags.link #}
 
 {% set methodsList = [] %}
-#### <span style="display: none;">{{ class }}</span> Methods:
+### <span style="display: none;">{{ class }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in class.methods|sort_asc %}
 {% set methodsList = methodsList|merge([method.name]) %}
@@ -104,7 +104,7 @@
 > This class has not methods.
 {% endfor %}
 
-#### <span style="display: none;">{{ class }}</span> Inherited methods:
+#### <span style="display: none;">{{ class }}</span> Inherited methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in class.inheritedMethods if method.name not in methodsList -%}
   {%- if method.parent in project.indexes.classes %}
@@ -124,4 +124,34 @@
 {% endif %}
 {% else %}
 > This class has not inherited methods.
+{% endfor %}
+
+{% set propertiesList = [] %}
+### <span style="display: none;">{{ class }}</span> Properties
+{# Lista de propiedades públicas y protegidas #}
+{% for property in class.properties|merge(class.magicProperties|default([]))|sort_asc if property.visibility != 'private' %}
+{% set propertiesList = propertiesList|merge([property.name]) %}
+{% include 'property.md.twig' %}
+{% else %}
+> This class has not properties.
+{% endfor %}
+
+#### <span style="display: none;">{{ class }}</span> Inherited properties
+{# Lista de métodos públicos y protegidos #}
+{% for property in class.inheritedProperties if property.name not in propertiesList and property.visibility != 'private'-%}
+  {%- if property.parent in project.indexes.classes %}
+    {%- set parent_location = 'classes' %}
+  {%- elseif property.parent in project.indexes.interfaces %}
+    {%- set parent_location = 'interfaces' %}
+  {%- else %}
+    {%- set parent_location = 'traits' %}
+  {%- endif %}
+
+- [{{ property.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ property.parent.name }}</span>](/api/{{ parent_location }}.html#
+  {{- property.parent|trim('\\')|lower|replace('\\', '-') -}}
+  )::
+  {{- include('property-anchor-link.md.twig', { text: '$' ~ property.name  }) -}}
+  {{ include('badges.md.twig', { elem: property }) }}
+{% else %}
+> This class has not inherited properties.
 {% endfor %}
