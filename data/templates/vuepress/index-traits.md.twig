@@ -12,7 +12,7 @@ pageClass: phpdoc-api-generated-page
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for trait in namespace.traits|sort_asc %}
-        {%- include 'trait.md.twig' %}
+        {%- include 'struct-trait.md.twig' %}
     {%- endfor %}
 {% endfor %}
 

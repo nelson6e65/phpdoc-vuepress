@@ -86,7 +86,7 @@
 {# Lista de métodos públicos y protegidos #}
 {% for method in class.methods|sort_asc %}
 {% set methodsList = methodsList|merge([method.name]) %}
-{% include 'method.md.twig' %}
+{% include 'member-method.md.twig' %}
 {% else %}
 > This class has not methods.
 {% endfor %}
@@ -105,7 +105,7 @@
 - [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/{{ parent_location }}.html#
   {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
   )::
-  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) -}}
+  {{- include('anchor-link-method.md.twig', { text: method.name ~ '()' }) -}}
   {{ include('badges.md.twig', { elem: method }) }}
 {% else %}
 > This class has not inherited methods.
@@ -116,7 +116,7 @@
 {# Lista de propiedades públicas y protegidas #}
 {% for property in class.properties|merge(class.magicProperties|default([]))|sort_asc %}
 {% set propertiesList = propertiesList|merge([property.name]) %}
-{% include 'property.md.twig' %}
+{% include 'member-property.md.twig' %}
 {% else %}
 > This class has not properties.
 {% endfor %}
@@ -135,7 +135,7 @@
 - [{{ property.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ property.parent.name }}</span>](/api/{{ parent_location }}.html#
   {{- property.parent|trim('\\')|lower|replace('\\', '-') -}}
   )::
-  {{- include('property-anchor-link.md.twig', { text: '$' ~ property.name  }) -}}
+  {{- include('anchor-link-property.md.twig', { text: '$' ~ property.name  }) -}}
   {{ include('badges.md.twig', { elem: property }) }}
 {% else %}
 > This class has not inherited properties.

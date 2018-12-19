@@ -8,7 +8,7 @@ pageClass: phpdoc-api-generated-page
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for class in namespace.classes|sort_asc %}
-        {%- include 'class.md.twig' %}
+        {%- include 'struct-class.md.twig' %}
     {%- endfor %}
 {% endfor %}
 
