@@ -58,9 +58,7 @@
 ### <span style="display: none;">{{ interface }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in interface.methods|sort_asc %}
-{% if method.visibility != 'private' %}
 {% include 'method.md.twig' %}
-{% endif %}
 {% else %}
 > This interface has not methods.
 {% endfor %}

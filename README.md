@@ -48,6 +48,7 @@ Add a file called `phpdoc.xml` with the following content to the root of your pr
     <title>My Project Documentation</title>
     <parser>
       <target>output/doc</target>
+      <visibility>public,protected</visibility>
     </parser>
     <transformer>
       <target>docs/api</target>
@@ -61,8 +62,31 @@ Add a file called `phpdoc.xml` with the following content to the root of your pr
 </phpdoc>
 ```
 
-More information about [configuring phpDocumentor](http://www.phpdoc.org/docs/latest/references/configuration.html).
+**Default visibility**
+By default, all members are parsed. If you want to ignore the private members, you should config the `visibility` option of `phpdoc`:
 
+```xml
+  <parser>
+    <!-- Only Public and Protected members are parsed -->
+    <visibility>public,protected</visibility>
+  </parser>
+```
+
+```xml
+  <parser>
+    <!-- Only Public members are parsed -->
+    <visibility>public</visibility>
+  </parser>
+```
+
+```xml
+  <parser>
+    <!-- Only private members are parsed -->
+    <visibility>private</visibility>
+  </parser>
+```
+
+More information about [configuring phpDocumentor](http://www.phpdoc.org/docs/latest/references/configuration.html).
 
 ### Configure routes in VuePress
 
