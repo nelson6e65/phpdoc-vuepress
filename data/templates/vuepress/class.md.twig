@@ -52,31 +52,40 @@
     {%- set traits = traits|merge({ (name): (name|split('\\')|last) }) -%}
 {% endfor %}
 
-| Name | {{ class.name }} |
-| ----:|:---------------- |
-{% if class.parent %}
- **Extends** | [{{ class.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ class.parent.name }}</span>](/api/classes.html#
-  {{- class.parent|trim('\\')|lower|replace('\\', '-') }})
-{% endif %}
-{% for iname, ishort in interfaces if ishort is not empty %}
-{% if loop.first -%}
-**Implements** |
-{%- endif -%}
- [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
-{% endfor %}
+|     |     |
+| ---:|:--- |
+| **Extends** |
+    {%- if class.parent -%}
+        [{{ class.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ class.parent.name }}</span>](/api/classes.html#
+        {{- class.parent|trim('\\')|lower|replace('\\', '-') }})
+    {%- else -%}
+        _Nothing_
+    {%- endif -%}
+|
+| **Implements** |
+    {%- for iname, ishort in interfaces if ishort is not empty -%}
+        [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#
+        {{- iname|lower|replace('\\', '-') }}) <br />
+    {%- else -%}
+        _Nothing_
+    {%- endfor -%}
+|
+| **Uses** |
+    {%- for tName, tShort in traits if tShort is not empty -%}
+        [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#
+        {{- tName|trim('\\')|lower|replace('\\', '-') }}) <br />
+    {%- else -%}
+        _Nothing_
+    {%- endfor -%}
+|
 
-{% for tName, tShort in traits if tShort is not empty %}
-{% if loop.first -%}
-**Uses** |
-{%- endif -%}
- [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#{{ tName|trim('\\')|lower|replace('\\', '-') }}) {{- '<br />' -}}
-{% endfor %}
-
-{% for author in class.tags.author %}
-{% if loop.first %}- **Authors:**{% endif %}
-
-  - {{ author.description }}
-{%- endfor %}
+| | |
+|:---:| --- |
+| **Authors** |
+    {%- for author in class.tags.author -%}
+      {{ author.description }} <br />
+    {%- endfor -%}
+|
 
 
 {% if class.tags.see is not empty or class.tags.link is not empty %}

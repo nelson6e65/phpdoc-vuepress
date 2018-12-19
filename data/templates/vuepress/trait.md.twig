@@ -27,21 +27,24 @@
     {%- set usedTraits = usedTraits|merge({ (name): (name|split('\\')|last) }) -%}
 {% endfor %}
 
-| Name | {{ trait.name }} |
-| ----:|:---------------- |
-{% for tName, tShort in usedTraits if tShort is not empty %}{# FIXME #}
-{% if loop.first -%}
-**Uses** |
-{%- endif -%}
- [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#{{ tShort|lower|replace('\\', '-') }}) {{- '<br />' -}}
-{% endfor %}
+|     |     |
+| ---:| --- |
+| ***Uses*** {# FIXME #} |
+    {%- for tName, tShort in usedTraits if tShort is not empty -%}
+        [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#
+        {{- tName|trim('\\')|lower|replace('\\', '-') }}) <br />
+    {%- else -%}
+        _Nothing_
+    {%- endfor -%}
+|
 
-
-{% for author in trait.tags.author %}
-{% if loop.first %}- **Authors:**{% endif %}
-
-  - {{ author.description }}
-{%- endfor %}
+| | |
+|:---:| --- |
+| ***Authors*** |
+    {%- for author in trait.tags.author -%}
+      {{ author.description }} <br />
+    {%- endfor -%}
+|
 
 
 {% if trait.tags.see is not empty or trait.tags.link is not empty %}
