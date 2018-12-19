@@ -65,16 +65,6 @@
 > This trait has not methods.
 {% endfor %}
 
-#### <span style="display: none;">{{ trait }}</span> Inherited methods
-{# Lista de métodos públicos y protegidos #}
-{% for method in trait.inheritedMethods -%}
-- [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/traits.html#
-  {{- method.parent|trim('\\')|lower|replace('\\', '-') -}}
-  )::
-  {{- include('method-anchor-link.md.twig', { text: method.name ~ '()' }) }} {{ include('badges.md.twig', { elem: method }) }}
-{% else %}
-> This trait has not inherited methods.
-{% endfor %}
 
 {% set propertiesList = [] %}
 ### <span style="display: none;">{{ trait }}</span> Properties
