@@ -35,25 +35,25 @@
  [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#{{ iname|lower|replace('\\', '-') }}) {{- '<br />' -}}
 {% endfor %}
 
-{% for author in class.tags.author %}
+{% for author in interface.tags.author %}
 {% if loop.first %}- **Authors:**{% endif %}
 
   - {{ author.description }}
 {%- endfor %}
 
 
-{% if class.tags.see is not empty or class.tags.link is not empty %}
+{% if interface.tags.see is not empty or interface.tags.link is not empty %}
 ***See Also:***
 
-{% for see in class.tags.see %}
+{% for see in interface.tags.see %}
 * `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
 {% endfor %}
 
-{% for link in class.tags.link %}
+{% for link in interface.tags.link %}
 * [{{ link.description|default(link.link) }}]({{ link.link }})
 {% endfor %}
 
-{% endif %}{# class.tags.see || class.tags.link #}
+{% endif %}{# interface.tags.see || interface.tags.link #}
 
 ### <span style="display: none;">{{ interface }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
