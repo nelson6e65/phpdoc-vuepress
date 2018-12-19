@@ -12,25 +12,22 @@
     {{- '$' ~ property.name }} {{ include('badges.md.twig', { elem: property }) }}
 -----
 
+{{ property.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+
 {# property signature #}
 ```php
-{{ property.visibility }}{% if property.static %} static{% endif %} {{ property.types|default(['mixed'])|join('|')}} ${{ property.name }}
+{{ property.visibility }}{% if property.static %} static{% endif %} ${{ property.name }}
 {%- if property.default %} = {{ property.default|raw }}{% endif %};
 ```
 
-{{ property.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+***Types:***
+- `{{ property.types|default(['mixed'])|join('`\n-`') }}`
 
 {% if property.description is not empty %}
 ***Description:***
 
 {{ property.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
-{% endif %}
-
-{% if method.response.description %}
-***Return Value:***
-
-{{ method.response.description|raw }}
-
 {% endif %}
 
 
