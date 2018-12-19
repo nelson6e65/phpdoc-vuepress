@@ -4,6 +4,7 @@
 
 {{ interface.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
+
 {#- Parents -#}
 {% set parents = [] %}
 
@@ -37,27 +38,7 @@
     {%- endfor -%}
 |
 
-| | |
-|:---:| --- |
-| **Authors** |
-    {%- for author in interface.tags.author -%}
-      {{ author.description }} <br />
-    {%- endfor -%}
-|
-
-
-{% if interface.tags.see is not empty or interface.tags.link is not empty %}
-***See Also:***
-
-{% for see in interface.tags.see %}
-* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
-{% endfor %}
-
-{% for link in interface.tags.link %}
-* [{{ link.description|default(link.link) }}]({{ link.link }})
-{% endfor %}
-
-{% endif %}{# interface.tags.see || interface.tags.link #}
+{{ include('metadata-table.md.twig', { elem: interface }) }}
 
 ### <span style="display: none;">{{ interface }}</span> Methods
 {# Lista de métodos públicos y protegidos #}

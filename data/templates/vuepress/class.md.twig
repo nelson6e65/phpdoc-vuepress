@@ -79,27 +79,7 @@
     {%- endfor -%}
 |
 
-| | |
-|:---:| --- |
-| **Authors** |
-    {%- for author in class.tags.author -%}
-      {{ author.description }} <br />
-    {%- endfor -%}
-|
-
-
-{% if class.tags.see is not empty or class.tags.link is not empty %}
-***See Also:***
-
-{% for see in class.tags.see %}
-* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
-{% endfor %}
-
-{% for link in class.tags.link %}
-* [{{ link.description|default(link.link) }}]({{ link.link }})
-{% endfor %}
-
-{% endif %}{# class.tags.see || class.tags.link #}
+{{ include('metadata-table.md.twig', { elem: class }) }}
 
 {% set methodsList = [] %}
 ### <span style="display: none;">{{ class }}</span> Methods

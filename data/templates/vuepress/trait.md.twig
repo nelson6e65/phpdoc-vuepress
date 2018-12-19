@@ -2,7 +2,6 @@
 
 {{ trait.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
-{{ trait.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
 {#- Used traits -#}
 {% set usedTraits = [] %}
@@ -29,7 +28,7 @@
 
 |     |     |
 | ---:| --- |
-| ***Uses*** {# FIXME #} |
+| **Uses** {# FIXME #} |
     {%- for tName, tShort in usedTraits if tShort is not empty -%}
         [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#
         {{- tName|trim('\\')|lower|replace('\\', '-') }}) <br />
@@ -38,27 +37,16 @@
     {%- endfor -%}
 |
 
-| | |
-|:---:| --- |
-| ***Authors*** |
-    {%- for author in trait.tags.author -%}
-      {{ author.description }} <br />
-    {%- endfor -%}
-|
+### Description
 
+{% if trait.description %}
+{{ trait.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) -}}
+{% else %}
+> No description.
+{% endif %}
 
-{% if trait.tags.see is not empty or trait.tags.link is not empty %}
-***See Also:***
+{{ include('metadata-table.md.twig', { elem: trait}) }}
 
-{% for see in trait.tags.see %}
-* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
-{% endfor %}
-
-{% for link in trait.tags.link %}
-* [{{ link.description|default(link.link) }}]({{ link.link }})
-{% endfor %}
-
-{% endif %}{# class.tags.see || class.tags.link #}
 
 ### <span style="display: none;">{{ trait }}</span> Methods
 {# Lista de métodos públicos y protegidos #}

@@ -1,0 +1,62 @@
+| | |
+|:--------:| ----------- |
+{{ '' }}
+
+{%- if elem.tags.since is not empty %}
+| ***Since*** |
+    {%- for since in elem.tags.since -%}
+        `
+        {%- if since.version -%}
+            v
+        {%- endif -%}
+
+        {{- since.version|default('undefined') -}}
+        `
+
+        {%- if since.description -%}
+            {{ ': ' ~ since.description }}
+        {%- endif -%}
+
+         <br />
+    {%- endfor -%}
+|
+{% endif %}
+
+{%- if elem.deprecated %}
+| **Deprecated** |
+    {%- for deprecated in elem.tags.deprecated -%}
+        {%- if deprecated.version -%}
+            Since `v{{ deprecated.version }}`
+
+            {%- if deprecated.description -%}
+                {{ ': ' }}
+            {%- endif -%}
+
+        {%- elseif deprecated.description is empty -%}
+            Yes
+        {%- endif -%}
+
+        {{ deprecated.description }} <br />
+    {%- endfor -%}
+|
+{% endif %}
+
+{%- if elem.tags.author is not empty %}
+| **Authors** |
+    {%- for author in elem.tags.author -%}
+      {{ author.description }} <br />
+    {%- endfor -%}
+|
+{% endif %}
+
+{%- if elem.tags.see is not empty or elem.tags.link is not empty %}
+| **See also** |
+    {%- for see in elem.tags.see -%}
+        `{{ see.reference }}` {% if see.description %}<br />{% endif %} {{ see.description }} <br /> {# TODO: Make references linkables #}
+    {%- endfor -%}
+
+    {%- for link in elem.tags.link -%}
+        [{{ link.description|default(link.link) }}]({{ link.link }}) <br />
+    {%- endfor -%}
+|
+{% endif %}

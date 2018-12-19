@@ -28,25 +28,14 @@
 {{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 {% endif %}
 
+{{ include('metadata-table.md.twig', { elem: method }) }}
+
+
 {% if method.response.description %}
-***Return Value:***
+***Returns:***
 
 {{ method.response.description|raw }}
 
 {% endif %}
-
-
-{% if method.tags.see is not empty or method.tags.link is not empty %}
-***See Also:***
-
-{% for see in method.tags.see %}
-* `{{ see.reference }}` {% if see.description %}-{% endif %} {{ see.description }}
-{% endfor %}
-
-{% for link in class.tags.link %}
-* [{{ link.description|default(link.link) }}]({{ link.link }})
-{% endfor %}
-
-{% endif %}{# class.tags.see || class.tags.link #}
 
 :::
