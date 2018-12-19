@@ -1,4 +1,16 @@
-{% include 'method-header.md.twig' %}
+
+:::
+{%- if method.visibility == 'protected' %}
+    {{- 'warning ' -}}
+{% elseif method.visibility == 'public' %}
+    {{- 'tip ' -}}
+{% else %}
+    {{- 'danger ' -}}
+{% endif -%}
+
+    {{ include('anchor-ref-method.md.twig') }}
+    {{- method.name }} ( ) {{ include('badges.md.twig', { elem: method }) }}
+-----
 
 {{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
