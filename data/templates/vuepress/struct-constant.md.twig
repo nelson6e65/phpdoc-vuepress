@@ -1,0 +1,13 @@
+## {{ constant|trim('\\') }} {{ include('badges.md.twig', { elem: constant }) }}
+
+{{ constant.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+
+### Description
+
+{% if constant.description %}
+{{ constant.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) -}}
+{% else %}
+> No description.
+{% endif %}
+
+{{ include('metadata-table.md.twig', { elem: constant }) }}
