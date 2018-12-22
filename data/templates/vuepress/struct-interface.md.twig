@@ -40,6 +40,14 @@
 
 {{ include('metadata-table.md.twig', { elem: interface }) }}
 
+### <span style="display: none;">{{ class }}</span> Constants
+{# Lista de constantes #}
+{% for constant in interface.constants|sort_asc %}
+{% include 'member-constant.md.twig' %}
+{% else %}
+> This interface has not constants.
+{% endfor %}
+
 ### <span style="display: none;">{{ interface }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in interface.methods|sort_asc %}

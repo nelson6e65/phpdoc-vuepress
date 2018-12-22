@@ -81,6 +81,14 @@
 
 {{ include('metadata-table.md.twig', { elem: class }) }}
 
+### <span style="display: none;">{{ class }}</span> Constants
+{# Lista de constantes #}
+{% for constant in class.constants|sort_asc %}
+{% include 'member-constant.md.twig' %}
+{% else %}
+> This class has not constants.
+{% endfor %}
+
 {% set methodsList = [] %}
 ### <span style="display: none;">{{ class }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
