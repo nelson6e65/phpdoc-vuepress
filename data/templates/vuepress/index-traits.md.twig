@@ -1,10 +1,8 @@
----
-sidebarDepth: 2
-editLink: false
-pageClass: phpdoc-api-generated-page
----
+{% extends "_index.md.twig" %}
 
-# Traits
+{% block title %}Traits{% endblock %}
+
+{% block content %}
 
 ::: danger Auto-generation note:
 {# FIXME #} :bug: Some traits may use other tratis, but due to some issues the used traits are not recognized.
@@ -16,6 +14,4 @@ pageClass: phpdoc-api-generated-page
     {%- endfor %}
 {% endfor %}
 
-
---------
-_This document was automatically generated from source code comments using [phpDocumentor](http://www.phpdoc.org/)._
+{% endblock %}

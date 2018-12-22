@@ -1,10 +1,8 @@
----
-sidebarDepth: 2
-editLink: false
-pageClass: phpdoc-api-generated-page
----
+{% extends "_index.md.twig" %}
 
-# Functions
+{% block title %}Functions{% endblock %}
+
+{% block content %}
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for function in namespace.functions|sort_asc %}
@@ -12,6 +10,4 @@ pageClass: phpdoc-api-generated-page
     {%- endfor %}
 {% endfor %}
 
-
---------
-_This document was automatically generated from source code comments using [phpDocumentor](http://www.phpdoc.org/)._
+{% endblock %}
