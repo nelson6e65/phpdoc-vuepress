@@ -2,6 +2,12 @@
 
 {{ constant.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
 
+```php
+{{ constant.name }} = {{ constant.value|raw }};
+```
+
+**Type:** **`{{ constant.types|default(['mixed'])|sort_asc|join('`** | **`')}}`**
+
 ### Description
 
 {% if constant.description %}
