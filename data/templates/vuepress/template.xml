@@ -10,6 +10,7 @@
     <transformation writer="twig" source="templates/vuepress/index-classes.md.twig" artifact="classes.md" />
     <transformation writer="twig" source="templates/vuepress/index-interfaces.md.twig" artifact="interfaces.md" />
     <transformation writer="twig" source="templates/vuepress/index-traits.md.twig" artifact="traits.md" />
+    <transformation writer="twig" source="templates/vuepress/index-functions.md.twig" artifact="functions.md" />
   </transformations>
   <parameters>
     <parameter key="twig-debug">true</parameter>
