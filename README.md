@@ -1,5 +1,12 @@
 # phpDocumentor VuePress template
 
+[![GitHub release](https://img.shields.io/github/tag/nelson6e65/phpdoc-vuepress.svg)](https://github.com/nelson6e65/phpdoc-vuepress/tags)
+[![Latest Version](https://img.shields.io/packagist/v/nelson6e65/phpdoc-vuepress.svg?label=stable)](https://packagist.org/packages/nelson6e65/phpdoc-vuepress)
+[![Latest unstable Version](https://img.shields.io/packagist/vpre/nelson6e65/phpdoc-vuepress.svg?label=unstable)](https://packagist.org/packages/nelson6e65/phpdoc-vuepress#dev-master)
+
+[![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)
+
+
 [phpDocumentor template](http://www.phpdoc.org/docs/latest/getting-started/changing-the-look-and-feel.html) that generates [VuePress](https://vuepress.vuejs.org) documentation of your API.
 
 The main use-case for this template is to generate simple and nice looking API documentation pages to be integrated in a VuePress project.
@@ -22,7 +29,7 @@ composer require --dev nelson6e65/phpdoc-vuepress
 
 > At the moment, this package has not PHP dependencies for usage,
 
-
+> You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
 
 ## Usage
 
