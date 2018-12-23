@@ -2,7 +2,7 @@
 <template>
   <author>Nelson Martell</author>
   <email>nelson6e65@gmail.com</email>
-  <version>1.0.0</version>
+  <version>1.0.0-beta</version>
   <copyright>2018 Nelson Martell</copyright>
   <description>Generate API documentation pages in Markdown format for VuePress.</description>
   <transformations>
