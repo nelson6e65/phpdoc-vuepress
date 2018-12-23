@@ -116,7 +116,9 @@ module.exports = {
           '/api/', // README.ms
           '/api/classes', // classes.md
           '/api/interfaces', // interfaces.md
-          '/api/traits', // interfaces.md
+          '/api/traits', // traits.md
+          '/api/functions', // functions.md
+          '/api/constants', // constants.md
         ]
       }
     ],
