@@ -19,7 +19,7 @@
 {{ method.visibility }}{% if method.static %} static{% endif %} {{ method.name }}( {% for argument in method.arguments %}
 {{- argument.types|default(['mixed'])|sort_asc|join('|')~' ' }}
 {{- argument.byReference ? '&' }}
-{{- argument.name }}{% if argument.default %} = {{ argument.default|raw }}{% endif %}
+{{- argument.name }}{% if argument.default is not same as(null) %} = {{ argument.default|raw }}{% endif %}
 {%- if not loop.last %}, {% endif -%}
 {%- endfor -%}
 {{- ' ) : ' ~ method.response.types|default('void')|join('|') }}
@@ -29,7 +29,7 @@
 | Parameter | Type(s) | Description |
 |-----------|------|-------------|
 {% for argument in method.arguments %}
-| `{{ argument.name }}` {% if argument.default %}<Badge text="optional" type="warn"/>{% endif -%}
+| `{{ argument.name }}` {% if argument.default is not same as(null) %}<Badge text="optional" type="warn"/>{% endif -%}
 | **`{{ argument.types|default(['mixed'])|sort_asc|join('`** <br /> **`')|raw  }}`** | {{ argument.description|replace({'|': '&#124;', "\n": ' ', "\r": ' '})|raw }} |
 {% endfor %}
 {% endif %}{# method.arguments is not empty #}

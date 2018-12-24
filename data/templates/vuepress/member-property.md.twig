@@ -18,7 +18,7 @@
 {# property signature #}
 ```php
 {{ property.visibility }}{% if property.static %} static{% endif %} ${{ property.name }}
-{%- if property.default %} = {{ property.default|raw }}{% endif %};
+{%- if property.default is not same as(null) %} = {{ property.default|raw }}{% endif %};
 ```
 
 ***Types:***
