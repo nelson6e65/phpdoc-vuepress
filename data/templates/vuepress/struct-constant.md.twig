@@ -1,6 +1,6 @@
 ## {{ constant|trim('\\') }} {{ include('badges.md.twig', { elem: constant }) }}
 
-{{ constant.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ constant.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
 ```php
 {{ constant.name }} = {{ constant.value|raw }};
@@ -11,7 +11,7 @@
 ### Description
 
 {% if constant.description %}
-{{ constant.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) -}}
+{{ constant.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% else %}
 > No description.
 {% endif %}

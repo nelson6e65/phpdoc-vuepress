@@ -1,6 +1,6 @@
 ## {{ trait|trim('\\') }} {{ include('badges.md.twig', { elem: trait }) }}
 
-{{ trait.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ trait.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
 
 {#- Used traits -#}
@@ -40,7 +40,7 @@
 ### Description
 
 {% if trait.description %}
-{{ trait.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) -}}
+{{ trait.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% else %}
 > No description.
 {% endif %}

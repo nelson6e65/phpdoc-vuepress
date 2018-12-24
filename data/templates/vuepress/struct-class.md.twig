@@ -1,8 +1,8 @@
 ## {{ class|trim('\\') }} {{ include('badges.md.twig', { elem: class }) }}
 
-{{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
-{{ class.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ class.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
 {#- Class and parent interfaces -#}
 {% set interfaces = [] %}

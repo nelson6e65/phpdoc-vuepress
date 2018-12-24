@@ -12,7 +12,7 @@
     {{- '$' ~ property.name }} {{ include('badges.md.twig', { elem: property }) }}
 -----
 
-{{ property.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ property.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
 
 {# property signature #}
@@ -27,7 +27,7 @@
 {% if property.description is not empty %}
 ***Description:***
 
-{{ property.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ property.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% endif %}
 
 {{ include('metadata-table.md.twig', { elem: property }) }}

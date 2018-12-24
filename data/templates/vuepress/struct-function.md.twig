@@ -1,11 +1,11 @@
 ## {{ function|trim('\\') }} {{ include('badges.md.twig', { elem: function }) }}
 
-{{ function.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ function.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
 ### Description
 
 {% if function.description %}
-{{ function.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) -}}
+{{ function.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% else %}
 > No description.
 {% endif %}

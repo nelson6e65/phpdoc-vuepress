@@ -12,7 +12,7 @@
     {{- method.name }} ( ) {{ include('badges.md.twig', { elem: method }) }}
 -----
 
-{{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
 {# Method signature #}
 ```php
@@ -37,7 +37,7 @@
 {% if method.description is not empty %}
 ***Description:***
 
-{{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',}) }}
+{{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% endif %}
 
 {{ include('metadata-table.md.twig', { elem: method }) }}
