@@ -4,7 +4,7 @@
 
 {# Function signature #}
 ```php
-{{ function.name }}( {% for argument in function.arguments %}
+function {{ function.name }}( {% for argument in function.arguments %}
 {{- argument.types|default(['mixed'])|sort_asc|join('|')~' ' }}
 {{- argument.byReference ? '&' }}
 {{- argument.name }}{% if argument.default is not same as(null) %} = {{ argument.default|raw }}{% endif %}
