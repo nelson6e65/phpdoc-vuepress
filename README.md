@@ -13,9 +13,14 @@ The main use-case for this template is to generate simple and nice looking API d
 
 > Only tested in the default theme of VuePress.
 
-Example of documentation generated with this template: https://nelson6e65.github.io/php_nml/api/
-
 > **Special note:** This template is based on Markdown template created by [@cvuorinen](https://github.com/cvuorinen) in [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public).
+
+
+## Demo
+
+Check a demo of documentation generated with this template in https://nelson6e65.github.io/php_nml/api/.
+
+> See also the sources in [nelson6e65/php_nml](https://github.com/nelson6e65/php_nml) repo for configuration examples.
 
 
 ## Installation
