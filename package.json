@@ -1,0 +1,15 @@
+{
+  "name": "phpdoc-vuepress",
+  "version": "1.0.0",
+  "repository": "git@github.com:nelson6e65/phpdoc-vuepress.git",
+  "author": "Nelson Martell <nelson6e65@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "vuepress": "^0.14.8"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+   }
+}
