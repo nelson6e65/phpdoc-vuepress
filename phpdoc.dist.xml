@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <title>Demo for `phpdoc-vuepress`</title>
+
+  <parser>
+    <visibility>public,protected</visibility>
+    <target>output/phpdoc/api</target>
+  </parser>
+
+  <transformer>
+    <target>docs/api</target>
+  </transformer>
+
+  <transformations>
+    <template name="data/templates/vuepress" />
+  </transformations>
+
+  <files>
+    <directory>demo</directory>
+  </files>
+
+</phpdoc>

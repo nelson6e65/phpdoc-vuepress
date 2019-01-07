@@ -15,6 +15,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/' },
+      { text: 'Demo', link: '/api/' },
     ],
 
     sidebar: {
@@ -28,6 +29,20 @@ module.exports = {
           ]
         }
       ],
+      '/api/': [
+        {
+          title: 'Demo',
+          collapsable: false,
+          children: [
+            '',
+            'classes',
+            'interfaces',
+            'traits',
+            'functions',
+            'constants'
+          ]
+        }
+      ],
       '/': [
         ''
       ]
@@ -36,17 +51,9 @@ module.exports = {
 
     lastUpdated: true,
 
-
     // Repo
     repo: 'nelson6e65/phpdoc-vuepress',
     docsDir: 'docs',
-    editLinks: true,
-  },
-
-  configureWebpack: {
-    output: {
-      filename: '[name].js',
-      chunkFilename: 'assets/js/[name].js' + '?id=[chunkhash]'
-    }
+    editLinks: true
   }
 }

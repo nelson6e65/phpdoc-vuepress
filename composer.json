@@ -19,9 +19,23 @@
         "phpdocumentor/phpdocumentor": "^2.9",
         "jms/serializer": "1.7.*"
     },
+    "autoload-dev": {
+		"psr-4": {
+			"NelsonMartell\\VuePress\\Demo\\": "demo"
+		},
+        "files": [
+			"demo/constants.php",
+			"demo/functions.php"
+		]
+	},
+    "scripts": {
+		"build:api": [
+			"phpdoc"
+		]
+	},
     "extra": {
 		"branch-alias": {
-			"dev-master": "v1.0.x-dev"
+			"dev-master": "1.0.x-dev"
 		}
 	}
 }
