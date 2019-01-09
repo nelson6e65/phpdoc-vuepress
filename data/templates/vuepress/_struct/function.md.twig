@@ -32,7 +32,7 @@ function {{ function.name }}( {% for argument in function.arguments %}
 > No description.
 {% endif %}
 
-{{ include('metadata-table.md.twig', { elem: function }) }}
+{{ include('_tables/metadata.md.twig', { elem: function }) }}
 
 {% if function.response.description %}
 ### Returns

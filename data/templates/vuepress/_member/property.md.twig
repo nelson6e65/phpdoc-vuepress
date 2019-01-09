@@ -30,6 +30,6 @@
 {{ property.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% endif %}
 
-{{ include('metadata-table.md.twig', { elem: property }) }}
+{{ include('_tables/metadata.md.twig', { elem: property }) }}
 
 :::

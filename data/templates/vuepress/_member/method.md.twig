@@ -40,7 +40,7 @@
 {{ method.description|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 {% endif %}
 
-{{ include('metadata-table.md.twig', { elem: method }) }}
+{{ include('_tables/metadata.md.twig', { elem: method }) }}
 
 
 {% if method.response.description %}
