@@ -4,7 +4,7 @@
 
   <parser>
     <visibility>public,protected</visibility>
-    <target>output/phpdoc/api</target>
+    <target>build/api-cache</target>
   </parser>
 
   <transformer>
