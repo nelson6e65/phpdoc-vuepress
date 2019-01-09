@@ -1,3 +1,4 @@
+
 ## {{ class|trim('\\') }} {{ include('badges.md.twig', { elem: class }) }}
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
@@ -84,7 +85,7 @@
 ### <span style="display: none;">{{ class }}</span> Constants
 {# Lista de constantes #}
 {% for constant in class.constants|sort_asc %}
-{% include 'member-constant.md.twig' %}
+    {{ include('_member/constant.md.twig') }}
 {% else %}
 > This class has not constants.
 {% endfor %}
@@ -94,7 +95,7 @@
 {# Lista de métodos públicos y protegidos #}
 {% for method in class.methods|sort_asc %}
 {% set methodsList = methodsList|merge([method.name]) %}
-{% include 'member-method.md.twig' %}
+  {{ include('_member/method.md.twig') }}
 {% else %}
 > This class has not methods.
 {% endfor %}
@@ -124,7 +125,7 @@
 {# Lista de propiedades públicas y protegidas #}
 {% for property in class.properties|merge(class.magicProperties|default([]))|sort_asc %}
 {% set propertiesList = propertiesList|merge([property.name]) %}
-{% include 'member-property.md.twig' %}
+  {{ include('_member/property.md.twig') }}
 {% else %}
 > This class has not properties.
 {% endfor %}

@@ -1,3 +1,4 @@
+
 ## {{ interface|trim('\\') }} {{ include('badges.md.twig', { elem: interface }) }}
 
 {{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
@@ -43,7 +44,7 @@
 ### <span style="display: none;">{{ class }}</span> Constants
 {# Lista de constantes #}
 {% for constant in interface.constants|sort_asc %}
-{% include 'member-constant.md.twig' %}
+    {{ include('_member/constant.md.twig') }}
 {% else %}
 > This interface has not constants.
 {% endfor %}
@@ -51,7 +52,7 @@
 ### <span style="display: none;">{{ interface }}</span> Methods
 {# Lista de métodos públicos y protegidos #}
 {% for method in interface.methods|sort_asc %}
-{% include 'member-method.md.twig' %}
+    {{ include('_member/method.md.twig') }}
 {% else %}
 > This interface has not methods.
 {% endfor %}

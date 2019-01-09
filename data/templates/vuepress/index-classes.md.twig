@@ -5,7 +5,7 @@
 {% block content %}
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for class in namespace.classes|sort_asc %}
-        {%- include 'struct-class.md.twig' %}
+        {{ include('_struct/class.md.twig') }}
     {%- endfor %}
 {% endfor %}
 {% endblock %}

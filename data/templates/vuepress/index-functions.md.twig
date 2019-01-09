@@ -6,7 +6,7 @@
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for function in namespace.functions|sort_asc %}
-        {%- include 'struct-function.md.twig' %}
+        {{ include('_struct/function.md.twig') }}
     {%- endfor %}
 {% endfor %}
 

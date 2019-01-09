@@ -6,7 +6,7 @@
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for interface in namespace.interfaces|sort_asc %}
-        {%- include 'struct-interface.md.twig' %}
+        {{ include('_struct/interface.md.twig') }}
     {%- endfor %}
 {%- endfor %}
 

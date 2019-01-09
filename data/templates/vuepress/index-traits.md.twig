@@ -5,12 +5,12 @@
 {% block content %}
 
 ::: danger Auto-generation note:
-{# FIXME #} :bug: Some traits may use other tratis, but due to some issues the used traits are not recognized.
+{# FIXME #} :bug: Some traits may use other traits, but due to some issues the used traits are not recognized.
 :::
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for trait in namespace.traits|sort_asc %}
-        {%- include 'struct-trait.md.twig' %}
+        {{ include('_struct/trait.md.twig') }}
     {%- endfor %}
 {% endfor %}
 

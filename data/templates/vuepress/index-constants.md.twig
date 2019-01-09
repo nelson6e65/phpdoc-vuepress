@@ -6,7 +6,7 @@
 
 {% for namespace in project.indexes.namespaces|sort_asc  %}
     {%- for constant in namespace.constants|sort_asc %}
-        {%- include 'struct-constant.md.twig' %}
+        {{ include('_struct/constant.md.twig') }}
     {%- endfor %}
 {% endfor %}
 
