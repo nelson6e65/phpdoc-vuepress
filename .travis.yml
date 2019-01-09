@@ -1,0 +1,38 @@
+language: php
+
+php:
+  - 7.1
+
+node_js: '8'
+
+cache:
+- yarn
+- composer
+
+env:
+  matrix:
+    - BUILD_DOCS=false
+
+matrix:
+  fast_finish: false
+  include:
+    - php: 7.2
+      env: BUILD_DOCS=true
+
+before_install:
+  # Setup Git
+  - git config --global user.email "deploy@travis-ci.org"
+  - git config --global user.name "Travis CI Bot"
+
+  # Install/update Yarn
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - yarn
+
+script:
+  - composer build:api
+  - yarn docs:build
