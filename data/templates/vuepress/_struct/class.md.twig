@@ -57,7 +57,7 @@
 | ---:|:--- |
 | **Extends** |
     {%- if class.parent -%}
-        [{{ class.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ class.parent.name }}</span>](/api/classes.html#
+        [{{ class.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ class.parent.name }}</span>](classes.html#
         {{- class.parent|trim('\\')|lower|replace({'\\': '-'}) }})
     {%- else -%}
         _Nothing_
@@ -65,7 +65,7 @@
 |
 | **Implements** |
     {%- for iname, ishort in interfaces if ishort is not empty -%}
-        [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#
+        [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](interfaces.html#
         {{- iname|lower|replace({'\\': '-'}) }}) <br />
     {%- else -%}
         _Nothing_
@@ -73,7 +73,7 @@
 |
 | **Uses** |
     {%- for tName, tShort in traits if tShort is not empty -%}
-        [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](/api/traits.html#
+        [{{ tName|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ tShort }}</span>](traits.html#
         {{- tName|trim('\\')|lower|replace({'\\': '-'}) }}) <br />
     {%- else -%}
         _Nothing_
@@ -111,7 +111,7 @@
     {%- set parent_location = 'traits' %}
   {%- endif %}
 
-- [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/{{ parent_location }}.html#
+- [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>]({{ parent_location }}.html#
   {{- method.parent|trim('\\')|lower|replace({'\\': '-'}) -}}
   )::
   {{- include('_blocks/anchor-link-method.md.twig', { text: method.name ~ '()' }) -}}
@@ -141,7 +141,7 @@
     {%- set parent_location = 'traits' %}
   {%- endif %}
 
-- [{{ property.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ property.parent.name }}</span>](/api/{{ parent_location }}.html#
+- [{{ property.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ property.parent.name }}</span>]({{ parent_location }}.html#
   {{- property.parent|trim('\\')|lower|replace({'\\': '-'}) -}}
   )::
   {{- include('_blocks/anchor-link-property.md.twig', { text: '$' ~ property.name  }) -}}

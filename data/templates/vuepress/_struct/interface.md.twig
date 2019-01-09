@@ -32,7 +32,7 @@
 | ---:|:--- |
 | **Extends** |
     {%- for iname, ishort in parents if ishort is not empty -%}
-        [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](/api/interfaces.html#
+        [{{ iname|trim('\\')|split('\\')|slice(0, -1)|join('\\') }}\\<span style="font-weight: bold;">{{ ishort }}</span>](interfaces.html#
         {{- iname|lower|replace({'\\': '-'}) }}) <br />
     {%- else -%}
         _Nothing_
