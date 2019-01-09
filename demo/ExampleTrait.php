@@ -3,12 +3,15 @@
 namespace NelsonMartell\VuePress\Demo;
 
 /**
- * Example class.
+ * Example trait.
  *
  * @since 1.0.0
  * @author Nelson Martell <nelson6e65@gmail.com>
  */
-class Example extends ExampleClass
+trait ExampleTrait
 {
-    use ExampleTrait;
+    protected function explain()
+    {
+        return 'Explanation';
+    }
 }

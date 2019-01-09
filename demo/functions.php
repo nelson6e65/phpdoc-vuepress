@@ -6,7 +6,7 @@ namespace NelsonMartell\VuePress\Demo;
  * An example function.
  *
  * @param int         $index Index.
- * @param string|null $name  Name.
+ * @param string|null $title  Name.
  *
  * @return string
  *
