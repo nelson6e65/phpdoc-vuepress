@@ -7,11 +7,11 @@
   <description>Generate API documentation pages in Markdown format for VuePress.</description>
   <transformations>
     <transformation writer="twig" source="templates/vuepress/index.md.twig" artifact="README.md" />
-    <transformation writer="twig" source="templates/vuepress/index-classes.md.twig" artifact="classes.md" />
-    <transformation writer="twig" source="templates/vuepress/index-interfaces.md.twig" artifact="interfaces.md" />
-    <transformation writer="twig" source="templates/vuepress/index-traits.md.twig" artifact="traits.md" />
-    <transformation writer="twig" source="templates/vuepress/index-functions.md.twig" artifact="functions.md" />
-    <transformation writer="twig" source="templates/vuepress/index-constants.md.twig" artifact="constants.md" />
+    <transformation writer="twig" source="templates/vuepress/classes.md.twig" artifact="classes.md" />
+    <transformation writer="twig" source="templates/vuepress/interfaces.md.twig" artifact="interfaces.md" />
+    <transformation writer="twig" source="templates/vuepress/traits.md.twig" artifact="traits.md" />
+    <transformation writer="twig" source="templates/vuepress/functions.md.twig" artifact="functions.md" />
+    <transformation writer="twig" source="templates/vuepress/constants.md.twig" artifact="constants.md" />
   </transformations>
   <parameters>
     <parameter key="twig-debug">true</parameter>
