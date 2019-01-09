@@ -9,15 +9,15 @@ cache:
 - composer
 
 env:
-  matrix:
-    - BUILD_DOCS=false
+  global:
+    # - BUILD_DOCS=false
     - PHPDOC=2
 
 matrix:
   fast_finish: false
   include:
     - php: 7.2
-      env: BUILD_DOCS=true
+      env: PHPDOC=3
 
   allow_failures:
     - php: 7.2
