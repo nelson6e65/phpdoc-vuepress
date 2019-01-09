@@ -1,5 +1,5 @@
 
-## {{ interface|trim('\\') }} {{ include('badges.md.twig', { elem: interface }) }}
+## {{ interface|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: interface }) }}
 
 {{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 

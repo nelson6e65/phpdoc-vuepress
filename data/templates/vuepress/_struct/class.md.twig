@@ -1,5 +1,5 @@
 
-## {{ class|trim('\\') }} {{ include('badges.md.twig', { elem: class }) }}
+## {{ class|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: class }) }}
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
@@ -114,8 +114,8 @@
 - [{{ method.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ method.parent.name }}</span>](/api/{{ parent_location }}.html#
   {{- method.parent|trim('\\')|lower|replace({'\\': '-'}) -}}
   )::
-  {{- include('anchor-link-method.md.twig', { text: method.name ~ '()' }) -}}
-  {{ include('badges.md.twig', { elem: method }) }}
+  {{- include('_blocks/anchor-link-method.md.twig', { text: method.name ~ '()' }) -}}
+  {{ include('_blocks/badges.md.twig', { elem: method }) }}
 {% else %}
 > This class has not inherited methods.
 {% endfor %}
@@ -144,8 +144,8 @@
 - [{{ property.parent.namespace|trim('\\') -}}\\<span style="font-weight: bold;">{{ property.parent.name }}</span>](/api/{{ parent_location }}.html#
   {{- property.parent|trim('\\')|lower|replace({'\\': '-'}) -}}
   )::
-  {{- include('anchor-link-property.md.twig', { text: '$' ~ property.name  }) -}}
-  {{ include('badges.md.twig', { elem: property }) }}
+  {{- include('_blocks/anchor-link-property.md.twig', { text: '$' ~ property.name  }) -}}
+  {{ include('_blocks/badges.md.twig', { elem: property }) }}
 {% else %}
 > This class has not inherited properties.
 {% endfor %}

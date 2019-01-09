@@ -1,5 +1,5 @@
 
-## {{ function|trim('\\') }} {{ include('badges.md.twig', { elem: function }) }}
+## {{ function|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: function }) }}
 
 {{ function.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 

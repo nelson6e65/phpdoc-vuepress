@@ -8,8 +8,8 @@
     {{- 'danger ' -}}
 {% endif -%}
 
-    {{ include('anchor-ref-method.md.twig') }}
-    {{- method.name }} ( ) {{ include('badges.md.twig', { elem: method }) }}
+    {{ include('_blocks/anchor-ref-method.md.twig') }}
+    {{- method.name }} ( ) {{ include('_blocks/badges.md.twig', { elem: method }) }}
 -----
 
 {{ method.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}

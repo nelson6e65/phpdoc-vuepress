@@ -8,8 +8,8 @@
     {{- 'tip ' -}} {# TODO wait compatibiliti with PHP 7.1 constant visibility {{ constant.visibility }}#}
 {% endif -%}
 
-    {#{ include('anchor-ref-constant.md.twig') }#}
-    {{- constant.name }} {{ include('badges.md.twig', { elem: constant }) }}
+    {#{ include('_blocks/anchor-ref-constant.md.twig') }#}
+    {{- constant.name }} {{ include('_blocks/badges.md.twig', { elem: constant }) }}
 -----
 
 {{ constant.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
