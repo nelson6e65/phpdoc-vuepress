@@ -15,7 +15,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/' },
-      { text: 'Demo', link: '/api/' },
+      { text: 'Demo', link: '/demo/' },
     ],
 
     sidebar: {
@@ -29,7 +29,7 @@ module.exports = {
           ]
         }
       ],
-      '/api/': [
+      '/demo/': [
         {
           title: 'Demo',
           collapsable: false,

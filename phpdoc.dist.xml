@@ -8,7 +8,7 @@
   </parser>
 
   <transformer>
-    <target>docs/api</target>
+    <target>docs/demo</target>
   </transformer>
 
   <transformations>

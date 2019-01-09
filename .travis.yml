@@ -56,7 +56,7 @@ install:
 script:
   - |
     if [[ $PHPDOC == '3' ]]; then
-      phpdoc -d demo/ -t docs/api/ --force --template=data/templates/vuepress/
+      phpdoc -d demo/ -t docs/demo/ --force --template=data/templates/vuepress/
     else
       composer build:api
     fi
