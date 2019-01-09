@@ -6,6 +6,6 @@
     {%- set parent_location = 'traits' %}
 {%- endif -%}
 
-<a href="{{ parent_location }}.html#{{ property.parent|trim('\\')|replace('\\', '-') }}::${{ property.name }}">
+<a href="{{ parent_location }}.html#{{ property.parent|trim('\\')|replace({'\\': '-'}) }}::${{ property.name }}">
     {{- text|default(property.name|default(property))|raw -}}
 </a> {{ '' -}}

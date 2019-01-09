@@ -6,6 +6,6 @@
     {%- set parent_location = 'traits' %}
 {%- endif -%}
 
-<a href="{{ parent_location }}.html#{{ method|trim('\\()')|replace('\\', '-') }}">
+<a href="{{ parent_location }}.html#{{ method|trim('\\()')|replace({'\\': '-'}) }}">
     {{- text|default(method.name|default(method))|raw -}}
 </a> {{ '' -}}
