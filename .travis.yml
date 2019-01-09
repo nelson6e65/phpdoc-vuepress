@@ -20,19 +20,30 @@ matrix:
       env: BUILD_DOCS=true
 
 before_install:
+  # Update composer
+  - composer self-update
+
   # Setup Git
   - git config --global user.email "deploy@travis-ci.org"
   - git config --global user.name "Travis CI Bot"
+
+  # Setup Composer
+  - composer global config minimum-stability dev
+  - composer global config prefer-stable true
+  - export PATH="$(composer config -g home)/vendor/bin:$PATH"
 
   # Install/update Yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
 
-before_script:
-  - composer self-update
+install:
+  - composer global require phpdocumentor/phpdocumentor:dev-develop # phpDocumentor 3-dev
+  - composer global require symfony/dotenv
   - composer install --no-interaction
   - yarn
 
 script:
   - composer build:api
+  - yarn docs:build
+  - phpdoc -d demo/ -t docs/api/ --force --template=data/templates/vuepress/
   - yarn docs:build

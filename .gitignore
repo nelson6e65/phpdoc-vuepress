@@ -6,3 +6,4 @@ dist/
 docs/api/
 docs/demo/
 output/
+build/
