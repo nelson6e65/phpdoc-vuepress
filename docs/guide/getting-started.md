@@ -4,14 +4,31 @@
 
 - PHP >= 5.6
 - Node.js >= 8
-- [phpDocumentor](https://www.phpdoc.org/). This template is designed for **phpDocumentor2** (is also compatible with upcoming **phpDocumentor3** for PHP 7.1+ project). You can install it with composer as global requirement:  `composer global require phpdocumentor/phpdocumentor`.
-- [Yarn](https://yarnpkg.com) (or npm). To build the entire documentation with `vuepress`.
-- [VuePress](https://v0.vuepress.vuejs.org/). `v0.x`, but may be compatible with upcoming `v1.0.0`.
+- [Yarn](https://yarnpkg.com) (or npm).
+
+### Dependencies
+
+This template is designed for [phpDocumentor 2](https://www.phpdoc.org/) and [VuePress 0.x](https://v0.vuepress.vuejs.org/).
+
+> This template may be compatible with upcoming **phpDocumentor3** and **VuePress** v1.0.0, but will not be documented at the moment while they are unstable.
+
+You can globally install them:
+
+```bash
+# phpDocumentor2
+composer global require phpdocumentor/phpdocumentor:^2.9.0
+
+# VuePress
+yarn global add vuepress
+```
+
+> Read about [VuePress install](https://v0.vuepress.vuejs.org/guide/getting-started.html).
+
 
 
 ## Installation
 
-Install with composer:
+Install `nelson6e65/phpdoc-vuepress` with composer:
 
 ```bash
 composer require --dev nelson6e65/phpdoc-vuepress
@@ -25,7 +42,6 @@ composer require --dev nelson6e65/phpdoc-vuepress
 Go to [Configuration](configuration.md) in order to see how to configure.
 
 
-
 ## Usage
 
 Run phpDocumentor and set template as `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress`:
@@ -36,6 +52,15 @@ phpdoc -d="src/" -t="docs/api/" --template="vendor/nelson6e65/phpdoc-vuepress/da
 ```
 
 > More information about the available arguments can be found at [running phpDocumentor](http://www.phpdoc.org/docs/latest/guides/running-phpdocumentor.html).
+
+
+Then, you can update your VuePress pages with `vuepress` for your docs:
+
+```bash
+vuepress build docs # if you installed vuepress globally
+```
+
+
 
 
 ## Recommendations
