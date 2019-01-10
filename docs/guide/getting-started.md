@@ -1,5 +1,14 @@
 # Getting started
 
+## Requirements
+
+- PHP >= 5.6
+- Node.js >= 8
+- [phpDocumentor](https://www.phpdoc.org/). This template is designed for **phpDocumentor2** (is also compatible with upcoming **phpDocumentor3** for PHP 7.1+ project). You can install it with composer as global requirement:  `composer global require phpdocumentor/phpdocumentor`.
+- [Yarn](https://yarnpkg.com) (or npm). To build the entire documentation with `vuepress`.
+- [VuePress](https://v0.vuepress.vuejs.org/). `v0.x`, but may be compatible with upcoming `v1.0.0`.
+
+
 ## Installation
 
 Install with composer:
@@ -8,107 +17,26 @@ Install with composer:
 composer require --dev nelson6e65/phpdoc-vuepress
 ```
 
+> You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
+
+
+## Configuration
+
+Go to [Configuration](configuration.md) in order to see how to configure.
+
+
+
 ## Usage
 
-> Is highly recommended to use a global installation of `phpdoc`, vua composer global (`composer global require --dev phpdocumentor/phpdocumentor`) or the `.phar` file.
-
-Run phpDocumentor and set template as `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress`.
+Run phpDocumentor and set template as `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress`:
 
 
 ```bash
 phpdoc -d="src/" -t="docs/api/" --template="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress"
 ```
 
-More information about the available arguments can be found at [running phpDocumentor](http://www.phpdoc.org/docs/latest/guides/running-phpdocumentor.html).
+> More information about the available arguments can be found at [running phpDocumentor](http://www.phpdoc.org/docs/latest/guides/running-phpdocumentor.html).
 
-## Setup
-
-### Configuring phpdoc
-
-https://github.com/nelson6e65/php_nml/blob/master/phpcs.xml
-
-Add a file called `phpdoc.xml` with the following content to the root of your project and invoke the `phpdoc` command without arguments. Modify the configuration to suit your project.
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<phpdoc>
-    <parser>
-        <visibility>public,protected</visibility>
-        <target>output/doc</target>
-    </parser>
-
-    <transformer>
-        <target>docs/api</target>
-    </transformer>
-
-    <transformations>
-        <template name="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" />
-    </transformations>
-
-    <files>
-        <directory>src</directory>
-    </files>
-</phpdoc>
-```
-
-More information about [configuring phpDocumentor](http://www.phpdoc.org/docs/latest/references/configuration.html).
-
-### Configure routes in VuePress
-
-Create **`docs/.vuepress/config.js`**
-
-
-
-
-
-```js
-module.exports = {
-  // Output build
-  dest: 'output/docs/php_nml',
-  base: '/php_nml/',
-
-  markdown: {
-    lineNumbers: false,
-    toc: { includeLevel: [1, 2, 3] },
-  },
-
-  themeConfig: {        
-    nav: [          
-      { text: 'API', link: '/api/' },
-    ],
-
-    sidebar: {          
-      '/api/': [
-        {
-          title: 'API',
-          collapsable: false,
-          children: [
-            '',
-            'classes',
-            'interfaces',
-            'traits',
-            'functions',
-            'constants'
-          ]
-        }
-      ],
-      '/': [
-        ''
-      ]
-    },
-    sidebarDepth: 3,
-
-    // Repo
-    repo: 'nelson6e65/php_nml',
-    docsDir: 'docs',
-    editLinks: true
-  }
-}
-```
-
-> Extract from [docs/.vuepress/config.js](https://github.com/nelson6e65/php_nml/blob/master/docs/.vuepress/config.js)
-
-> Read mor about recommended directory structure at https://vuepress.vuejs.org/guide/directory-structure.html
 
 ## Recommendations
 

@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: "phpdoc-vuepress"
-tagline: VuePress template for phpDocumentor
+tagline: Template for generating your PHP API documentation in a VuePress format.
 actionText: Get Started →
 actionLink: /guide/
 
