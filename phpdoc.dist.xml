@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
+  <!-- Title of your project. It will be used to show a mini description -->
   <title>`phpdoc-vuepress` demo</title>
 
   <parser>
     <visibility>public,protected</visibility>
-    <target>build/api-cache</target>
+    <target>build/api-cache</target> <!-- This can be set to any directory (remember ignore it by Git) -->
   </parser>
 
   <transformer>
+    <!-- This is the directory where the generated files will be. -->
+    <!-- Set it according to your VuePress config  -->
     <target>docs/demo</target>
   </transformer>
 
   <transformations>
-    <template name="data/templates/vuepress" />
+    <!-- This is the directory where the template is. -->
+    <template name="data/templates/vuepress" /> <!-- In this case, the template.xml file is in that directory-->
+
+    <!-- By default, should be set to: "vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" -->
+    <!-- <template name="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" /> -->
   </transformations>
 
   <files>
+    <!-- This is the directory that will be extracted the documentation. In this case. `demo/` -->
     <directory>demo</directory>
   </files>
 

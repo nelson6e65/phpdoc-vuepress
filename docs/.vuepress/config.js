@@ -4,7 +4,7 @@ module.exports = {
   base: '/phpdoc-vuepress/',
 
   title: 'phpdoc-vuepress',
-  description: 'VuePress template for phpDocumentor',
+  description: 'Template for generating your PHP API documentation in a pretty VuePress format',
   ga: 'UA-58599811-1',
 
   markdown: {
@@ -14,33 +14,37 @@ module.exports = {
 
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide/' },
-      { text: 'Demo', link: '/demo/' },
+      { text: 'Guide', link: '/guide/' }, // Normal documentation link
+      { text: 'Demo', link: '/demo/' }, // Your api documentation link
     ],
 
     sidebar: {
-      '/guide/': [
+      '/guide/': [ // Normal documentation
         {
           title: 'Guide',
           collapsable: false,
-          children: [
+          children: [ // Normal pages
             '',
             'getting-started',
             'configuration',
           ]
         }
       ],
+
+      // Your API documentation
+      // Here is where will be generated your files (`docs/demo/` in this case).
+      // (This directory should be ignored by Git)
       '/demo/': [
         {
-          title: 'Demo',
+          title: 'Demo', // Title of your API documentation
           collapsable: false,
           children: [
-            '',
-            'classes',
-            'interfaces',
-            'traits',
-            'functions',
-            'constants'
+            '', // Ref. to the `README.md` file
+            'classes', // Ref. to the `classes.md` file
+            'interfaces', // Ref. to the `interfaces.md` file
+            'traits', // Ref. to the `traits.md` file
+            'functions', // Ref. to the `functions.md` file
+            'constants' // Ref. to the `constants.md` file
           ]
         }
       ],
