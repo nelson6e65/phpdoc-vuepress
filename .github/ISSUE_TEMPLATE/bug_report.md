@@ -12,9 +12,11 @@ assignees: nelson6e65
 - [ ] Documentation
 - [ ] Template (twig, xml)
 - [ ] PHP sources
-- [ ] Appearance 
+- [ ] Output HTML
+- [ ] Output Markdown
+- [ ] Appearance
 - [ ] Other
- 
+
 
 **Describe the bug**
 A clear and concise description of what the bug is.
@@ -38,12 +40,12 @@ If applicable, add screenshots to help explain your problem.
  - **Browser**: [e.g. chrome, safari]
 
 **Versions:**
- - **Template**: 
- - PHP: 
- - Node: 
- - Yarn: 
- - **VuePress**: 
- - **phpDocumentor**: 
+ - **Template**:
+ - PHP:
+ - Node:
+ - Yarn:
+ - **VuePress**:
+ - **phpDocumentor**:
 
 **Additional context**
 <!-- Add any other context about the problem here. -->

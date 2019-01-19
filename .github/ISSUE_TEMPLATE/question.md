@@ -1,7 +1,7 @@
 ---
 name: Question
 about: Questions about usage or misunderstood instructions.
-title: "[Question] How to ____?"
+title: "[question] How to ____?"
 labels: question
 assignees: ''
 
@@ -12,7 +12,9 @@ assignees: ''
 - [ ] Documentation
 - [ ] Template (twig, xml)
 - [ ] PHP sources
-- [ ] Appearance 
+- [ ] Output HTML
+- [ ] Output Markdown
+- [ ] Appearance
 - [ ] Other
 
 **Description**
