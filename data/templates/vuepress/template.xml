@@ -2,9 +2,9 @@
 <template>
   <author>Nelson Martell</author>
   <email>nelson6e65@gmail.com</email>
-  <version>1.0.0-beta</version>
-  <copyright>2018 Nelson Martell</copyright>
-  <description>Generate API documentation pages in Markdown format for VuePress.</description>
+  <version>1.0.0-beta.3</version>
+  <copyright>2018-2019 © Nelson Martell</copyright>
+  <description>Template for generating your PHP API documentation in a pretty VuePress format</description>
   <transformations>
     <transformation writer="twig" source="templates/vuepress/index.md.twig" artifact="README.md" />
     <transformation writer="twig" source="templates/vuepress/classes.md.twig" artifact="classes.md" />
