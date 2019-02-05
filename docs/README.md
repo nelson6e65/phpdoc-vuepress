@@ -8,18 +8,15 @@ actionLink: /guide/
 footer: MIT Licensed | Copyright © 2018-2019 Nelson Martell
 
 features:
-- title: Classes documentation
-  details: Description, parents, interfaces and traits used, methods, properties, constants and more.
+- title: Document all your code
+  details: Generate documentation for all your classes, interfaces and traits sorted by namespace. Also, include your global/namespaced functions and constants.
 
-- title: Interfaces documentation
-  details: Description, parent interfaces, methods, constants and more.
+- title: Easy integration
+  details: Combine your API documentation with your existent VuePress pages by simply adding the 5 generated files to your sidebar configuration as a group.
 
-- title: Traits documentation
-  details: Description, used traits, methods, properties and more.
+- title: Linked references
+  details: Navigate between classes/members references by just a click. Get references of inherited members
 
-- title: Global constants
-  details: Description, type, value and more.
-
-- title: Global functions
-  details: Description, signature, parameters and more.
+- title: Searchable elements
+  details: Use the VuePress search in toolbar to find classes, interfaces, traits, functions and constants by name.
 ---
