@@ -1,0 +1,9 @@
+
+/* Remove padding and background in element Title */
+h2 code,
+h3 code,
+h4 code,
+h5 code {
+  background: none !important;
+  padding: 0 !important;
+}

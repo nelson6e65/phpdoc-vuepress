@@ -1,5 +1,6 @@
 
-## {{ trait|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: trait }) }}
+{% set elem = trait %}
+## {{ include('_blocks/name.md.twig') }} {{ include('_blocks/badges.md.twig') }}
 
 {{ trait.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 

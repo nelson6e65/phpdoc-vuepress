@@ -1,5 +1,6 @@
 
-## {{ class|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: class }) }}
+{% set elem = class %}
+## {{ include('_blocks/name.md.twig') }} {{ include('_blocks/badges.md.twig') }}
 
 {{ class.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 

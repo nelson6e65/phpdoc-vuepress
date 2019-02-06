@@ -1,5 +1,6 @@
 
-## {{ constant|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: constant }) }}
+{% set elem = constant %}
+## {{ include('_blocks/name.md.twig') }} {{ include('_blocks/badges.md.twig') }}
 
 {{ constant.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 

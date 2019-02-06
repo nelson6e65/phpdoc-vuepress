@@ -1,5 +1,6 @@
 
-## {{ interface|trim('\\') }} {{ include('_blocks/badges.md.twig', { elem: interface }) }}
+{% set elem = interface %}
+## {{ include('_blocks/name.md.twig') }} {{ include('_blocks/badges.md.twig') }}
 
 {{ interface.summary|replace({'#### ': '- ', '### ': '- ', '## ': '- ', '# ': '- ',})|raw }}
 
