@@ -28,13 +28,14 @@ This template will generate six VuePress `*.md` files with the DocBlock document
 
 
 
-## Demo
+## Demos
 
 Check a demo of documentation generated with this template in [Demo](/demo/)
 
-Explore sources of [nelson6e65/phpdoc-vuepress](https://github.com/nelson6e65/phpdoc-vuepress) to use configuration files as guide.
 
-> A real project API generated using this template: [nelson6e65.github.io/php_nml/api/](https://nelson6e65.github.io/php_nml/api/).
+**Real projects using this template:**
+
+- PHP: Nelson Martell Library - [https://nelson6e65.github.io/php_nml/api/](https://nelson6e65.github.io/php_nml/api/).
 
 
 ## License
