@@ -1,25 +1,24 @@
 module.exports = {
-  // Output build
+  // Directory where will be generated the HTML files by VuePress
   dest: 'dist/phpdoc-vuepress/',
+
+  // Base URL. Useful for GitHub pages.
   base: '/phpdoc-vuepress/',
 
+  // Title of your project
   title: 'phpdoc-vuepress',
-  description: 'Template for generating your PHP API documentation in a pretty VuePress format',
-  ga: 'UA-58599811-1',
 
-  markdown: {
-    lineNumbers: false,
-    toc: { includeLevel: [1, 2, 3] },
-  },
+  // Description of your project
+  description: 'Template for generating your PHP API documentation in a pretty VuePress format',
 
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide/' }, // Normal documentation link
-      { text: 'Demo', link: '/demo/' }, // Your api documentation link
+      { text: 'Guide', link: '/guide/' }, // Link to a non-api-documentation section
+      { text: 'API (demo)', link: '/demo/' }, // Lint to our API documentation route
     ],
 
     sidebar: {
-      '/guide/': [ // Normal documentation
+      '/guide/': [ // Normal documentation sidebar
         {
           title: 'Guide',
           collapsable: false,
@@ -31,14 +30,15 @@ module.exports = {
         }
       ],
 
-      // Your API documentation
+      // Your API documentation sidebar
       // Here is where will be generated your files (`docs/demo/` in this case).
-      // (This directory should be ignored by Git)
+      // This is the directory you configured in your `phpdoc.dist.xml` as target
+      // directory (or `-t` option of phpdoc)
       '/demo/': [
         {
-          title: 'Demo', // Title of your API documentation
+          title: 'API Demo',
           collapsable: false,
-          children: [
+          children: [ //
             '', // Ref. to the `README.md` file
             'classes', // Ref. to the `classes.md` file
             'interfaces', // Ref. to the `interfaces.md` file
@@ -52,13 +52,26 @@ module.exports = {
         ''
       ]
     },
+
+
+    // You can ignore the following optional customizations --------------------
+
+    markdown: {
+      lineNumbers: false,
+      toc: { includeLevel: [1, 2, 3] },
+    },
+
     sidebarDepth: 3,
 
     lastUpdated: true,
 
-    // Repo
+    evergreen: true,
+
+    // Repository configurations
     repo: 'nelson6e65/phpdoc-vuepress',
     docsDir: 'docs',
-    editLinks: true
+    editLinks: true,
+
+    ga: 'UA-58599811-1' // GoogleAnalytics ID.
   }
 }

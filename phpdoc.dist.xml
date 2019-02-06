@@ -3,28 +3,44 @@
   <!-- Title of your project. It will be used to show a mini description -->
   <title>`phpdoc-vuepress` demo</title>
 
-  <parser>
-    <visibility>public,protected</visibility>
-    <target>build/api-cache</target> <!-- This can be set to any directory (remember ignore it by Git) -->
-  </parser>
+  <!-- [1]
+  Directories and files from where will be extracted the documentation;
+  where your PHP sources are. -->
+  <files>
+    <!-- In this case, the soures to document are in the `demo/` dir-->
+    <directory>demo</directory>
+
+    <!-- You can include as many <directory> you need. And also, specific files
+    by using <file> tag-->
+
+    <!-- <file>vendor/cakephp/utility/Text.php</file> -->
+  </files>
+
 
   <transformer>
-    <!-- This is the directory where the generated files will be. -->
-    <!-- Set it according to your VuePress config  -->
+    <!-- [2]
+    Directory where the generate documentation files be. Set it according to
+    your VuePress config. In this case, it will be used the route `/demo`,
+    but you can use any you want -->
     <target>docs/demo</target>
   </transformer>
 
   <transformations>
-    <!-- This is the directory where the template is. -->
-    <template name="data/templates/vuepress" /> <!-- In this case, the template.xml file is in that directory-->
+    <!-- [3] Directory where the template.xml is. In this case, the template.xml file is in that directory -->
+    <template name="data/templates/vuepress" />
 
-    <!-- By default, should be set to: "vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" -->
+    <!-- But in your Composer project, you should use the following line instead of the previous one. -->
     <!-- <template name="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress" /> -->
   </transformations>
 
-  <files>
-    <!-- This is the directory that will be extracted the documentation. In this case. `demo/` -->
-    <directory>demo</directory>
-  </files>
 
+  <parser>
+    <!-- [4] Elements to include in your documentation by visibility:
+         public, protected and private. -->
+    <visibility>public,protected</visibility>
+
+    <!-- Directory where to put the cache. This can be set to any directory.
+         Remember ignore it by Git -->
+    <target>build/api-cache</target>
+  </parser>
 </phpdoc>
