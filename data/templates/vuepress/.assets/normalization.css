@@ -7,3 +7,12 @@ h5 code {
   background: none !important;
   padding: 0 !important;
 }
+
+table {
+  width: 100%;
+  display: table;
+}
+
+thead > tr > th:first-child {
+  width: 16%;
+}
