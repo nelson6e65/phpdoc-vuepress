@@ -16,3 +16,10 @@ table {
 thead > tr > th:first-child {
   width: 16%;
 }
+
+/* Remove padding and background in <code> used in the tables */
+td code,
+th code {
+  background: none;
+  padding: 0;
+}
