@@ -8,6 +8,7 @@
 
 [![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)
 [![Documentation](http://img.shields.io/badge/📜-Documentation-lightgrey.svg)](http://nelson6e65.github.io/phpdoc-vuepress)
+[![Wakatime](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress.svg)](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress)
 
 
 Template for generating your PHP API documentation in a pretty VuePress format.
