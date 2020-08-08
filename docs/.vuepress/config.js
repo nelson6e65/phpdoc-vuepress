@@ -6,10 +6,14 @@ module.exports = {
   base: '/phpdoc-vuepress/',
 
   // Title of your project
-  title: 'phpdoc-vuepress',
+  title: 'PHPDoc-VuePress',
 
   // Description of your project
   description: 'Template for generating your PHP API documentation in a pretty VuePress format',
+
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.svg' }] // Custom favicon
+  ],
 
   // Plugins config
   plugins: {
@@ -78,5 +82,14 @@ module.exports = {
     repo: 'nelson6e65/phpdoc-vuepress',
     docsDir: 'docs',
     editLinks: true,
+  },
+
+  // custom webpack configuration
+  configureWebpack: {
+    resolve: {
+      alias: { // Aliases
+        '@github': '../../.github/assets'
+      }
+    }
   }
 }

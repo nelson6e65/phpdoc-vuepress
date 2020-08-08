@@ -1,4 +1,6 @@
-# phpDocumentor VuePress template
+![Card](.github/card.svg)
+
+# PHPDoc-VuePress
 [![Travis Build Status](https://img.shields.io/travis/nelson6e65/phpdoc-vuepress/master.svg?logo=travis)](https://travis-ci.org/nelson6e65/phpdoc-vuepress)
 ![PHP Versions](https://img.shields.io/travis/php-v/nelson6e65/phpdoc-vuepress.svg)
 
@@ -13,7 +15,7 @@
 
 Template for generating your PHP API documentation in a pretty VuePress format.
 
-This package provides a **phpDocumentor** template to generates the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
+This package provides a **phpDocumentor** template to generate the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
 
 > Only tested with the default theme of VuePress.
 
@@ -56,7 +58,7 @@ Install `nelson6e65/phpdoc-vuepress` with composer:
 ```bash
 composer require --dev nelson6e65/phpdoc-vuepress
 ```
- 
+
 > You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
 
 
@@ -86,7 +88,7 @@ Check the documentation for more information [https://nelson6e65.github.io/phpdo
 
 [![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)
 
-Copyright (c) 2018-2019 Nelson Martell
+Copyright (c) 2018-2020 Nelson Martell
 
 Read the [`LICENSE` file](LICENSE) for details.
 

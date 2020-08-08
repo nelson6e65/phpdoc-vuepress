@@ -1,3 +1,6 @@
+
+![Card](~@github/card.svg)
+
 # Introduction
 
 ![GitHub release](https://img.shields.io/github/tag/nelson6e65/phpdoc-vuepress.svg?logo=github)
@@ -6,11 +9,11 @@
 
 ![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)
 
-::: tip phpdoc-vuepress
+::: tip PHPDoc-VuePress
 Template for generating your PHP API documentation in a pretty VuePress format.
 :::
 
-This package provides a **phpDocumentor** template to generates the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
+This package provides a **phpDocumentor** template to generate the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
 
 > Only tested with the default theme of VuePress.
 

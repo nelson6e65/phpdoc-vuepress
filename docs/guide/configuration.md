@@ -9,7 +9,7 @@ You need to tell phpDocumentor (1) where are your PHP source files, (2) where to
 In order to accomplish this, you must create a configuration file named  `phpdoc.dist.xml` and setup (1, 2, and 3).
 
 :::tip Template location [3]
-If you installed via Composer, the template will be `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress`.
+If you installed via Composer, the template will be located at `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress` directory.
 
 ```xml
 <transformations>

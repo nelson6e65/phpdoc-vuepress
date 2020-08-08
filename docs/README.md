@@ -1,11 +1,12 @@
 ---
 home: true
-heroText: "phpdoc-vuepress"
+heroText: PHPDoc-VuePress
+heroImage: /hero.svg
 tagline: Template for generating your PHP API documentation in a pretty VuePress format
 actionText: Get Started →
 actionLink: /guide/
 
-footer: MIT Licensed | Copyright © 2018-2019 Nelson Martell
+footer: MIT Licensed | Copyright © 2018-2020 Nelson Martell
 
 features:
 - title: Document all your code
