@@ -8,22 +8,20 @@
 
 ### Dependencies
 
-This template is designed for [phpDocumentor 2](https://www.phpdoc.org/) and [VuePress 0.x](https://v0.vuepress.vuejs.org/).
-
-> This template may be compatible with upcoming **phpDocumentor3** and **VuePress** v1.0.0, but will not be documented at the moment while they are unstable.
+- **phpDocumentor**: This template is designed for [phpDocumentor 2.x (2.9.1)](https://github.com/phpDocumentor/phpDocumentor#phpdocumentor), but may be compatible with upcoming **phpDocumentor3**.
+- **VuePress**: You can use the [version 1.x](https://v1.vuepress.vuejs.org/) by default, but you can also use [version 0.x](https://v0.vuepress.vuejs.org/), depending on your configuration compatibility.
 
 You can globally install them:
 
 ```bash
-# phpDocumentor2
+# phpDocumentor2 globally
 composer global require phpdocumentor/phpdocumentor:^2.9.0
 
 # VuePress
-yarn global add vuepress
+npm i -D vuepress
 ```
 
-> Read about [VuePress install](https://v0.vuepress.vuejs.org/guide/getting-started.html).
-
+> Read about [VuePress install](https://vuepress.vuejs.org/guide/getting-started.html).
 
 
 ## Installation

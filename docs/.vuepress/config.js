@@ -11,6 +11,13 @@ module.exports = {
   // Description of your project
   description: 'Template for generating your PHP API documentation in a pretty VuePress format',
 
+  // Plugins config
+  plugins: {
+    '@vuepress/google-analytics': {
+      ga: 'UA-58599811-1' // GoogleAnalytics ID (optional. use your own ga)
+    }
+  },
+
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/' }, // Link to a non-api-documentation section
@@ -71,7 +78,5 @@ module.exports = {
     repo: 'nelson6e65/phpdoc-vuepress',
     docsDir: 'docs',
     editLinks: true,
-
-    ga: 'UA-58599811-1' // GoogleAnalytics ID.
   }
 }

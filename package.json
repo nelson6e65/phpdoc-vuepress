@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "vuepress": "^0.14.8"
+    "@vuepress/plugin-google-analytics": "^1.5.3",
+    "vuepress": "^1.5.3"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",

@@ -44,9 +44,9 @@ Explore sources of [nelson6e65/phpdoc-vuepress](https://github.com/nelson6e65/ph
 - Node.js >= 8
 - [phpDocumentor](https://www.phpdoc.org/).
 - [Yarn](https://yarnpkg.com) (or npm)
-- [VuePress](https://v0.vuepress.vuejs.org/).
+- [VuePress](https://vuepress.vuejs.org/).
 
-> This template is designed for [phpDocumentor 2](https://www.phpdoc.org/) and [VuePress 0.x](https://v0.vuepress.vuejs.org/).
+> This template is designed for [phpDocumentor 2](https://www.phpdoc.org/) and [VuePress 1](https://v0.vuepress.vuejs.org/).
 > Read more about dependencies in the [Documentation](https://nelson6e65.github.io/phpdoc-vuepress/guide/getting-started.html).
 
 ## Installation
@@ -56,7 +56,7 @@ Install `nelson6e65/phpdoc-vuepress` with composer:
 ```bash
 composer require --dev nelson6e65/phpdoc-vuepress
 ```
-
+ 
 > You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
 
 
