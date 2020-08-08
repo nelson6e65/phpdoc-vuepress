@@ -8,7 +8,7 @@ php:
   - 7.3
 
 cache:
-- yarn
+- npm
 - composer
 
 env:
@@ -29,7 +29,7 @@ matrix:
       env: PHPDOC=3
     - php: 5.6
     - php: 7.0
-   
+
 
 before_install:
   # Update composer
@@ -59,7 +59,7 @@ install:
     fi
 
   - composer install --no-interaction
-  - yarn
+  - npm install
 
 script:
   - |
@@ -69,7 +69,7 @@ script:
       composer build:api
     fi
 
-  - yarn docs:build
+  - npm run docs:build
 
 deploy:
   provider: pages
