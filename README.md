@@ -1,4 +1,4 @@
-![Card](.github/card.svg)
+![Card](./.github/assets/card.svg)
 
 # PHPDoc-VuePress
 [![Travis Build Status](https://img.shields.io/travis/nelson6e65/phpdoc-vuepress/master.svg?logo=travis)](https://travis-ci.org/nelson6e65/phpdoc-vuepress)
