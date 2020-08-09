@@ -1,17 +1,16 @@
-
-![Card](~@github/card.svg)
-
 # Introduction
 
-![GitHub release](https://img.shields.io/github/tag/nelson6e65/phpdoc-vuepress.svg?logo=github)
-![Latest Version](https://img.shields.io/packagist/v/nelson6e65/phpdoc-vuepress.svg)
-![Latest unstable Version](https://img.shields.io/packagist/vpre/nelson6e65/phpdoc-vuepress.svg?label=unstable)
-
-![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)
+![Card](~@github/card.svg)
 
 ::: tip PHPDoc-VuePress
 Template for generating your PHP API documentation in a pretty VuePress format.
 :::
+
+![GitHub release](https://img.shields.io/github/tag/nelson6e65/phpdoc-vuepress.svg?logo=github)
+![Latest Version](https://img.shields.io/packagist/v/nelson6e65/phpdoc-vuepress.svg)
+![Latest unstable Version](https://img.shields.io/packagist/vpre/nelson6e65/phpdoc-vuepress.svg?label=unstable)
+![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)
+![Coding activity](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress.svg)
 
 This package provides a **phpDocumentor** template to generate the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
 
