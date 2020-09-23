@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "@vuepress/plugin-google-analytics": "^1.5.3",
-    "vuepress": "^1.5.3"
+    "vuepress": "^1.5.4"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
