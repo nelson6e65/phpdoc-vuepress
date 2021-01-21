@@ -11,14 +11,21 @@
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "dependencies": {
     "@vuepress/plugin-google-analytics": "^1.5.3",
     "vuepress": "^1.8.0"
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.12.0",
+    "husky": "^4.3.8",
     "prettier": "^2.2.1",
     "prettier-plugin-packagejson": "^2.2.9",
-    "prettier-plugin-twig-melody": "^0.4.6"
+    "prettier-plugin-twig-melody": "^0.4.6",
+    "pretty-quick": "^3.1.0"
   }
 }
