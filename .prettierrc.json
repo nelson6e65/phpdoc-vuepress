@@ -1,0 +1,15 @@
+{
+  "tabWidth": 2,
+  "xmlWhitespaceSensitivity": "ignore",
+  "printWidth": 120,
+  "twigPrintWidth": 120,
+
+  "overrides": [
+    {
+      "files": "*.js",
+      "options": {
+        "singleQuote": true
+      }
+    }
+  ]
+}
