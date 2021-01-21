@@ -1,6 +1,7 @@
 [![Card](./.github/assets/card.svg)](https://nelson6e65.github.io/phpdoc-vuepress)
 
 # PHPDoc-VuePress
+
 [![Travis Build Status](https://img.shields.io/travis/nelson6e65/phpdoc-vuepress/master.svg?logo=travis)](https://travis-ci.org/nelson6e65/phpdoc-vuepress)
 ![PHP Versions](https://img.shields.io/travis/php-v/nelson6e65/phpdoc-vuepress.svg)
 
@@ -11,7 +12,6 @@
 [![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)
 [![Documentation](http://img.shields.io/badge/📜-Documentation-lightgrey.svg)](https://nelson6e65.github.io/phpdoc-vuepress)
 [![Wakatime](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress.svg)](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress)
-
 
 Template for generating your PHP API documentation in a pretty VuePress format.
 
@@ -30,7 +30,6 @@ This template will generate six VuePress `*.md` files with the DocBlock document
 - `constants.md`: Contains all global constants, sorted by namespace.
 - `functions.md`: Contains all global functions, sorted by namespace.
 
-
 ## Demo
 
 Check a demo of documentation generated with this template in http://nelson6e65.github.io/phpdoc-vuepress/demo/
@@ -38,7 +37,6 @@ Check a demo of documentation generated with this template in http://nelson6e65.
 Explore sources of [nelson6e65/phpdoc-vuepress](https://github.com/nelson6e65/phpdoc-vuepress) to use configuration files as guide.
 
 > A real project API generated using this template: [nelson6e65.github.io/php_nml/api/](https://nelson6e65.github.io/php_nml/api/).
-
 
 ## Requirements
 
@@ -61,11 +59,9 @@ composer require --dev nelson6e65/phpdoc-vuepress
 
 > You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
 
-
 ## Usage
 
 Run phpDocumentor and set template as `vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress`:
-
 
 ```bash
 phpdoc -d="src/" -t="docs/api/" --template="vendor/nelson6e65/phpdoc-vuepress/data/templates/vuepress"
@@ -73,16 +69,13 @@ phpdoc -d="src/" -t="docs/api/" --template="vendor/nelson6e65/phpdoc-vuepress/da
 
 > More information about the available arguments can be found at [running phpDocumentor](http://www.phpdoc.org/docs/latest/guides/running-phpdocumentor.html).
 
-
 ## Configuration
 
 See the [Configuration section in the documentation](https://nelson6e65.github.io/phpdoc-vuepress/guide/configuration.html) for setup examples.
 
-
 ## Further reading
 
 Check the documentation for more information [https://nelson6e65.github.io/phpdoc-vuepress/](https://nelson6e65.github.io/phpdoc-vuepress/).
-
 
 ## License
 

@@ -16,7 +16,6 @@ This package provides a **phpDocumentor** template to generate the API documenta
 
 > Only tested with the default theme of VuePress.
 
-
 ## Features
 
 This template will generate six VuePress `*.md` files with the DocBlock documentation in your target directory:
@@ -28,17 +27,13 @@ This template will generate six VuePress `*.md` files with the DocBlock document
 - `constants.md`: Contains all global constants, sorted by namespace.
 - `functions.md`: Contains all global functions, sorted by namespace.
 
-
-
 ## Demos
 
 Check a demo of documentation generated with this template in [Demo](/demo/)
 
-
 **Real projects using this template:**
 
 - PHP: Nelson Martell Library - [https://nelson6e65.github.io/php_nml/api/](https://nelson6e65.github.io/php_nml/api/).
-
 
 ## License
 

@@ -3,11 +3,11 @@ name: Question
 about: Questions about usage or misunderstood instructions.
 title: "[question] How to ____?"
 labels: question
-assignees: ''
-
+assignees: ""
 ---
 
 **Scopes**
+
 - [ ] Installation
 - [ ] Documentation
 - [ ] Template (twig, xml)

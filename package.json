@@ -1,17 +1,19 @@
 {
   "name": "phpdoc-vuepress",
   "version": "1.0.0",
-  "repository": "git@github.com:nelson6e65/phpdoc-vuepress.git",
-  "author": "Nelson Martell <nelson6e65@gmail.com>",
-  "license": "MIT",
   "private": true,
+  "repository": "git@github.com:nelson6e65/phpdoc-vuepress.git",
+  "license": "MIT",
+  "author": "Nelson Martell <nelson6e65@gmail.com>",
+  "scripts": {
+    "cs:fix": "prettier --write .",
+    "cs:lint": "prettier --check .",
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs"
+  },
   "dependencies": {
     "@vuepress/plugin-google-analytics": "^1.5.3",
     "vuepress": "^1.8.0"
-  },
-  "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.12.0",

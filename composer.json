@@ -1,41 +1,48 @@
 {
-    "name": "nelson6e65/phpdoc-vuepress",
-    "description": "Template for generating your PHP API documentation in a pretty VuePress format.",
-    "keywords" : [ "PHPDoc", "PHP", "phpDocumentor", "Documentation", "Markdown", "VuePress" ],
-    "homepage" : "https://github.com/nelson6e65/phpdoc-vuepress",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Nelson Martell",
-            "email": "nelson6e65@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "NelsonMartell\\VuePress\\": "src"
-        }
+  "name": "nelson6e65/phpdoc-vuepress",
+  "description": "Template for generating your PHP API documentation in a pretty VuePress format.",
+  "keywords": [
+    "PHPDoc",
+    "PHP",
+    "phpDocumentor",
+    "Documentation",
+    "Markdown",
+    "VuePress"
+  ],
+  "homepage": "https://github.com/nelson6e65/phpdoc-vuepress",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nelson Martell",
+      "email": "nelson6e65@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "NelsonMartell\\VuePress\\": "src"
+    }
+  },
+  "require-dev": {
+    "phpdocumentor/phpdocumentor": "^2.9",
+    "jms/serializer": "1.7.*"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NelsonMartell\\VuePress\\Demo\\": "demo"
     },
-    "require-dev": {
-        "phpdocumentor/phpdocumentor": "^2.9",
-        "jms/serializer": "1.7.*"
-    },
-    "autoload-dev": {
-		"psr-4": {
-			"NelsonMartell\\VuePress\\Demo\\": "demo"
-		},
-        "files": [
-			"demo/constants.php",
-			"demo/functions.php"
-		]
-	},
-    "scripts": {
-		"build:api": [
-			"phpdoc --ansi"
-		]
-	},
-    "extra": {
-		"branch-alias": {
-			"dev-master": "1.0.x-dev"
-		}
-	}
+    "files": [
+      "demo/constants.php",
+      "demo/functions.php"
+    ]
+  },
+  "scripts": {
+    "build:api": [
+      "phpdoc --ansi"
+    ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
 }
