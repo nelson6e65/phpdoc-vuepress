@@ -17,6 +17,7 @@
     }
   },
   "dependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.0",
     "@vuepress/plugin-google-analytics": "^1.8.0",
     "vuepress": "^1.8.0"
   },

@@ -20,6 +20,7 @@ module.exports = {
     '@vuepress/google-analytics': {
       ga: 'UA-58599811-1', // GoogleAnalytics ID (optional. use your own ga)
     },
+    '@vuepress/back-to-top': {},
   },
 
   themeConfig: {
