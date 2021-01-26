@@ -11,6 +11,6 @@ updates:
       interval: "daily"
     commit-message:
       prefix: "build(deps): "
-      development-prefix: "build(dev-deps): "
+      prefix-development: "build(dev-deps): "
     reviewers:
       - nelson6e65
