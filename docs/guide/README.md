@@ -33,7 +33,9 @@ Check a demo of documentation generated with this template in [Demo](/demo/)
 
 **Real projects using this template:**
 
-- PHP: Nelson Martell Library - [https://nelson6e65.github.io/php_nml/api/](https://nelson6e65.github.io/php_nml/api/).
+- PHP: Nelson Martell Library - [https://php-nml.netlify.app/api](https://php-nml.netlify.app/api).
+
+> Do you use this template? Add it here! 😀
 
 ## License
 
