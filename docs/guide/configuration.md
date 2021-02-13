@@ -2,7 +2,7 @@
 
 ## Configuring phpDocumentor
 
-> These instructions are for phpDocumentor 2, but similar approachment will be valid for phpDocumentor 3.
+> These instructions are for phpDocumentor 2. phpDocumentor 3 is not _yet_ compatible.
 
 You need to tell phpDocumentor (1) where are your PHP source files, (2) where to generate the API documentation and (3) where is the template (for a Composer project, is ). You can, also, (4) configure which elements include by its visibility.
 
@@ -108,4 +108,4 @@ And then just run `composer phpdoc` :sunglasses:.
 
 :::
 
-> For further information, check the [Runing phpDocumentor documentation](https://docs.phpdoc.org/guides/running-phpdocumentor.html).
+> For further information, check the [Runing phpDocumentor documentation](https://docs.phpdoc.org/2.9/guides/running-phpdocumentor.html).

@@ -8,20 +8,28 @@
 
 ### Dependencies
 
-- **phpDocumentor**: This template is designed for [phpDocumentor 2.x (2.9.1)](https://github.com/phpDocumentor/phpDocumentor#phpdocumentor), but may be compatible with upcoming **phpDocumentor3**.
+- **phpDocumentor 2**: This template is designed for [phpDocumentor 2.x (2.9.1)](https://github.com/phpDocumentor/phpDocumentor/tree/2.9#readme).
 - **VuePress**: You can use the [version 1.x](https://v1.vuepress.vuejs.org/) by default, but you can also use [version 0.x](https://v0.vuepress.vuejs.org/), depending on your configuration compatibility.
 
 You can globally install them:
 
 ```bash
 # phpDocumentor2 globally
-composer global require phpdocumentor/phpdocumentor:^2.9.0
+composer global require phpdocumentor/phpdocumentor:^2.9.1
 
 # VuePress
 npm i -D vuepress
 ```
 
 > Read about [VuePress install](https://vuepress.vuejs.org/guide/getting-started.html).
+
+::: warning phpDocumentor3 compatibility
+At the moment, this template _is not compatible_ with the stable release of **phpDocumentor 3**, which supports new features of the latest PHP versions.
+
+It should generate documentation of any code written on PHP < 8, but, as **phpDocumentor 2**, the documentation should be generated on PHP 7.2 or 7.3. You can configure a CI like Travis CI, Netlify of Github Actions to generate the API documentation on PHP 7.2 for your code if not using it on your local environment.
+
+Compatibility with **phpDocumentor 3** is in progress 🚧 to support new features it offers.
+:::
 
 ## Installation
 
@@ -31,7 +39,7 @@ Install `nelson6e65/phpdoc-vuepress` with composer:
 composer require --dev nelson6e65/phpdoc-vuepress
 ```
 
-> You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
+> Pre-releases: You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
 
 ## Usage
 

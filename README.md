@@ -42,12 +42,14 @@ Explore sources of [nelson6e65/phpdoc-vuepress](https://github.com/nelson6e65/ph
 
 - PHP >= 5.6
 - Node.js >= 8
-- [phpDocumentor](https://www.phpdoc.org/).
+- [phpDocumentor](https://www.phpdoc.org/) 2.
 - [Yarn](https://yarnpkg.com) (or npm)
 - [VuePress](https://vuepress.vuejs.org/).
 
 > This template is designed for [phpDocumentor 2](https://www.phpdoc.org/) and [VuePress 1](https://v0.vuepress.vuejs.org/).
 > Read more about dependencies in the [Documentation](https://nelson6e65.github.io/phpdoc-vuepress/guide/getting-started.html).
+
+> Note: phpDocumentor 2 is able to generate documentation of code written on maybe any version of PHP < 8, but should be run on PHP 7.2. You can configure a CI like Travis CI, Netlify of Github Actions to generate the documentation on PHP 7.2 for your code if not using it on your local environment. Compatibility with phpDocumentor 3 is in progress 🚧 to support new features it offers.
 
 ## Installation
 
@@ -57,7 +59,7 @@ Install `nelson6e65/phpdoc-vuepress` with composer:
 composer require --dev nelson6e65/phpdoc-vuepress
 ```
 
-> You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' in order to be able to install pre-releases.
+> **Note for pre-releases:** You may need to set the composer option [minimum-stability](https://getcomposer.org/doc/04-schema.md#minimum-stability) to 'dev' or 'beta' in order to be able to install pre-releases.
 
 ## Usage
 
