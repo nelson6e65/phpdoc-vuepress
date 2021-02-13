@@ -6,7 +6,7 @@ tagline: Template for generating your PHP API documentation in a pretty VuePress
 actionText: Get Started →
 actionLink: /guide/
 
-footer: MIT Licensed | Copyright © 2018-2020 Nelson Martell
+footer: MIT Licensed | Copyright © 2018-2021 Nelson Martell
 
 features:
   - title: Document all your code

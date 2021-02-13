@@ -41,7 +41,7 @@ Check a demo of documentation generated with this template in [Demo](/demo/)
 
 ![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)
 
-Copyright (c) 2018-2020 Nelson Martell
+Copyright (c) 2018-2021 Nelson Martell
 
 Read the [`LICENSE` file](https://github.com/nelson6e65/phpdoc-vuepress/blob/master/LICENSE) for details.
 
