@@ -15,9 +15,9 @@
 
 Template for generating your PHP API documentation in a pretty VuePress format.
 
-This package provides a **phpDocumentor** template to generate the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
+This package provides a **phpDocumentor 2** template to generate the API documentation of your code to be integrated in a nice looking [VuePress](https://vuepress.vuejs.org) project.
 
-> Only tested with the default theme of VuePress.
+> **WIP**: 🚧🏗 Compatibility with phpDocumentor 3.
 
 ## Features
 
