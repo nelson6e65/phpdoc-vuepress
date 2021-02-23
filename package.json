@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.13.0",
-    "husky": "^4.3.8",
+    "husky": "^5.1.1",
     "prettier": "^2.2.1",
     "prettier-plugin-packagejson": "^2.2.10",
     "prettier-plugin-twig-melody": "^0.4.6",
