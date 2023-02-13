@@ -36,7 +36,7 @@
     ]
   },
   "scripts": {
-    "build:api": [
+    "build:api-docs": [
       "phpdoc --ansi"
     ]
   },
