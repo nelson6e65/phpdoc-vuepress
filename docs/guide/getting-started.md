@@ -2,8 +2,8 @@
 
 ## Requirements
 
-- PHP >= 5.6
-- Node.js >= 8
+- PHP >= 5.6 (PHP < 8.0 for your code, PHP 7.2 recommended for building documentation)
+- Node.js >= 8 < 18
 - [Yarn](https://yarnpkg.com) (or npm).
 
 ### Dependencies

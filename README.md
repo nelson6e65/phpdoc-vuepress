@@ -36,12 +36,12 @@ Check a demo of documentation generated with this template in http://nelson6e65.
 
 Explore sources of [nelson6e65/phpdoc-vuepress](https://github.com/nelson6e65/phpdoc-vuepress) to use configuration files as guide.
 
-> A real project API generated using this template: [nelson6e65.github.io/php_nml/api/](https://nelson6e65.github.io/php_nml/api/).
+> A real project API generated using this template: [nelson6e65/php_nml](https://php-nml.netlify.app/api/).
 
 ## Requirements
 
-- PHP >= 5.6
-- Node.js >= 8
+- PHP >= 5.6 < 8.0
+- Node.js >= 8 < 18
 - [phpDocumentor](https://www.phpdoc.org/) 2.
 - [Yarn](https://yarnpkg.com) (or npm)
 - [VuePress](https://vuepress.vuejs.org/).
@@ -83,7 +83,7 @@ Check the documentation for more information [https://nelson6e65.github.io/phpdo
 
 [![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)
 
-Copyright (c) 2018-2021 Nelson Martell
+Copyright (c) 2018-2023 Nelson Martell
 
 Read the [`LICENSE` file](LICENSE) for details.
 
