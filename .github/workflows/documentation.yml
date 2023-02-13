@@ -144,7 +144,7 @@ jobs:
       enabled: ${{ steps.can-deploy.outputs.value }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # - uses: jwalton/gh-find-current-pr@v1
       - name: Check PR number
@@ -204,7 +204,7 @@ jobs:
       name: ${{ needs.pre-deploy.outputs.context }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: "Distribution (cache)"
         uses: actions/cache@v3
