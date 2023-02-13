@@ -1,0 +1,5 @@
+* text=auto export-ignore linguist-detectable=false
+
+/pre-commit  text eol=lf diff=bash
+/pre-push    text eol=lf diff=bash
+/commit-msg  text eol=lf diff=bash
