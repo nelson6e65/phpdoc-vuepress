@@ -1,0 +1,282 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - master
+      - v1.x
+      - main
+
+  pull_request:
+    branches:
+      - master
+      - v1.x
+      - main
+
+  release:
+    types:
+      - created
+
+  workflow_dispatch:
+
+jobs:
+  pre-build:
+    name: Pre-build
+    runs-on: ubuntu-22.04
+
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+
+    steps:
+      - name: Check Duplicate Actions
+        id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5
+        with:
+          paths: |
+            [
+              ".github/workflows/documentation.yml",
+              "docs/**",
+              "demo/**",
+              "netlify.toml",
+              "phpdoc.dist.xml"
+            ]
+          do_not_skip: |
+            [
+              "release",
+              "workflow_dispatch"
+            ]
+          concurrent_skipping: "same_content_newer"
+
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    needs: pre-build
+    if: ${{ needs.pre-build.outputs.should_skip != 'true' }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Distribution (cache)"
+        uses: actions/cache@v3
+        id: dist-cache
+        with:
+          path: dist/phpdoc-vuepress
+          key: ${{ runner.os }}-dist-${{ github.sha }}
+
+      # Prepare PHP ------------------------------------------------------------
+      - name: Setup PHP 7.3 environment
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.3"
+
+      - name: Get Composer directories
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        id: composer-dirs
+        run: |
+          echo "::set-output name=cache::$(composer config cache-files-dir)"
+          echo "::set-output name=home::$(composer config home --global)"
+      - name: Composer (cache)
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-dirs.outputs.cache }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Prepare composer global
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        run: |
+          composer global config minimum-stability dev
+          composer global config prefer-stable true
+          echo "${{ steps.composer-dirs.outputs.home }}/vendor/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        run: composer install --prefer-dist --no-progress
+
+      # Prepare npm ------------------------------------------------------------
+      - name: Setup Node.js environment
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Get npm cache directory
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - name: NPM (cache)
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install Node.js dependencies
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        run: npm install
+
+      # Build ------------------------------------------------------------------
+      - name: Building PHP API documentation
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        run: composer build:api-docs
+
+      - name: Building VuePress documentation
+        if: ${{ steps.dist-cache.outputs.cache-hit != 'true' }}
+        run: npm run docs:build
+
+  # Pre-deploy
+  pre-deploy:
+    name: Pre-deploy
+    runs-on: ubuntu-22.04
+
+    outputs:
+      pr_number: ${{ steps.pr.outputs.number }}
+      pr_title: ${{ steps.pr.outputs.title }}
+      context: ${{ steps.context.outputs.value }}
+      netlify_alias: ${{ steps.deploy_alias.outputs.value }}
+      netlify_url: ${{ steps.deploy_url.outputs.value }}
+      netlify_branch: ${{ steps.branch.outputs.value }}
+      enabled: ${{ steps.can-deploy.outputs.value }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # - uses: jwalton/gh-find-current-pr@v1
+      - name: Check PR number
+        id: pr
+        run: |
+          echo "::set-output name=number::${{ github.event.number }}"
+      - uses: rlespinasse/github-slug-action@v4
+      - uses: haya14busa/action-cond@v1
+        id: context
+        name: Prepare Netlify environment
+        with:
+          cond: ${{ steps.pr.outputs.number == '' }}
+          if_true: "netlify"
+          if_false: "netlify-preview"
+
+      - uses: haya14busa/action-cond@v1
+        id: can-deploy
+        name: Detect branch is preview or is it enabled for production
+        with:
+          # Only allow previews and this branches: 'master'
+          cond: ${{ steps.context.outputs.value == 'netlify-preview' || env.GITHUB_REF_SLUG == 'v1.x' }}
+          if_true: true
+          if_false: false
+
+      - uses: haya14busa/action-cond@v1
+        id: branch
+        name: Get the target branch
+        with:
+          cond: ${{ env.GITHUB_REF_SLUG == 'v1.x' }}
+          if_true: ""
+          if_false: ${{ env.GITHUB_REF_SLUG }}
+
+      - uses: haya14busa/action-cond@v1
+        id: deploy_alias
+        name: Prepare Netlify alias
+        with:
+          cond: ${{ steps.context.outputs.value == 'netlify' }}
+          if_true: ${{ steps.branch.outputs.value }}
+          if_false: deploy-preview-${{ steps.pr.outputs.number }}
+
+      - uses: haya14busa/action-cond@v1
+        id: deploy_url
+        name: Netlify URL
+        with:
+          cond: ${{ steps.context.outputs.value == 'netlify' }}
+          if_true: https://phpdoc-vuepress.netlify.app
+          if_false: https://${{ steps.deploy_alias.outputs.value }}--phpdoc-vuepress.netlify.app
+
+  # Deploy
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-22.04
+    needs: [pre-deploy, build]
+    if: ${{ needs.pre-deploy.outputs.enabled == 'true' }}
+
+    environment:
+      name: ${{ needs.pre-deploy.outputs.context }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Distribution (cache)"
+        uses: actions/cache@v3
+        id: dist-cache
+        with:
+          path: dist/phpdoc-vuepress
+          key: ${{ runner.os }}-dist-${{ github.sha }}
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - name: NPM (cache)
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - uses: chrnorm/deployment-action@v1.2.0
+        id: deployment
+        with:
+          environment: ${{ needs.pre-deploy.outputs.context }}
+          token: "${{ github.token }}"
+          target_url: ${{ needs.pre-deploy.outputs.netlify_url }}
+
+      - name: Deploy documentation (production)
+        if: ${{ needs.pre-deploy.outputs.context == 'netlify' }}
+        run: npx netlify deploy --prod --timeout=600 --message "Deployed on $(date)"
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: Deploy documentation (preview)
+        if: ${{ needs.pre-deploy.outputs.context == 'netlify-preview' }}
+        run: npx netlify deploy --timeout=600 --message "Deployed preview on $(date)" --alias=$NETLIFY_ALIAS
+        env:
+          NETLIFY_ALIAS: ${{ needs.pre-deploy.outputs.netlify_alias }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: Update deployment status (success)
+        if: ${{ success() }}
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: "${{ github.token }}"
+          state: "success"
+          target_url: ${{ needs.pre-deploy.outputs.netlify_url }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: ${{ failure() }}
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: "${{ github.token }}"
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Write PR comment
+        if: ${{ success() && needs.pre-deploy.outputs.context == 'netlify-preview' }}
+        id: pr-comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ needs.pre-deploy.outputs.pr_number }}
+          body: |
+            Netlify documentation preview is live! :sparkles:
+            Built with commit ${{ github.sha }}
+            ${{ needs.pre-deploy.outputs.netlify_url }}
+          reactions: "rocket"

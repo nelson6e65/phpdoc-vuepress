@@ -4,6 +4,7 @@
 *.xml               text eol=lf
 *.svg               text eol=lf
 *.yml               text eol=lf
+*.toml              text eol=lf
 *.js                text eol=lf
 *.php               text eol=lf diff=php
 *.twig              text eol=lf
@@ -16,7 +17,7 @@
 /.husky             export-ignore
 /docs               export-ignore
 /demo               export-ignore
-/.travis.yml        export-ignore
+/.netlify.toml      export-ignore
 /phpdoc.dist.xml    export-ignore
 /package-lock.json  export-ignore
 /package.json       export-ignore

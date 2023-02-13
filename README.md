@@ -2,8 +2,9 @@
 
 # PHPDoc-VuePress
 
-[![Travis Build Status](https://img.shields.io/travis/nelson6e65/phpdoc-vuepress/master.svg?logo=travis)](https://travis-ci.org/nelson6e65/phpdoc-vuepress)
-![PHP Versions](https://img.shields.io/travis/php-v/nelson6e65/phpdoc-vuepress.svg)
+![Documentation build](https://img.shields.io/github/actions/workflow/status/nelson6e65/phpdoc-vuepress/documentation.yml?label=docs)
+
+![Packagist PHP Versions](https://img.shields.io/packagist/dependency-v/nelson6e65/phpdoc-vuepress/php)
 
 [![GitHub release](https://img.shields.io/github/tag/nelson6e65/phpdoc-vuepress.svg)](https://github.com/nelson6e65/phpdoc-vuepress/tags)
 [![Latest Version](https://img.shields.io/packagist/v/nelson6e65/phpdoc-vuepress.svg?label=stable)](https://packagist.org/packages/nelson6e65/phpdoc-vuepress)
