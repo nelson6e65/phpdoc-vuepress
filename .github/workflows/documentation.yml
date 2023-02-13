@@ -262,8 +262,9 @@ jobs:
         with:
           token: "${{ github.token }}"
           state: "success"
-          target_url: ${{ needs.pre-deploy.outputs.netlify_url }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          environment-url: ${{ needs.pre-deploy.outputs.netlify_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          environment: production
 
       - name: Update deployment status (failure)
         if: ${{ failure() }}
@@ -271,7 +272,7 @@ jobs:
         with:
           token: "${{ github.token }}"
           state: "failure"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
 
       - name: Write PR comment
         if: ${{ success() && needs.pre-deploy.outputs.context == 'netlify-preview' }}
