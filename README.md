@@ -79,6 +79,10 @@ See the [Configuration section in the documentation](https://nelson6e65.github.i
 
 Check the documentation for more information [https://nelson6e65.github.io/phpdoc-vuepress/](https://nelson6e65.github.io/phpdoc-vuepress/).
 
+## Contributing
+
+Check out the [CONTRIBUTING.md](.github/CONTRIBUTING.md) file for details about contributing.
+
 ## License
 
 [![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)

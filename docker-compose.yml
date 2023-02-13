@@ -1,0 +1,22 @@
+version: "3"
+services:
+  app:
+    user: "${UID:-1000}:${GID:-1000}"
+    build:
+      context: ./.docker/7.3
+      dockerfile: Dockerfile
+      args:
+        WWWGROUP: "${UID:-1000}"
+    networks:
+      - default
+    ports:
+      - "${VUEPRESS_DEV_PORT:-8080}:8080"
+      - "${VUEPRESS_PORT:-8089}:8089"
+    volumes:
+      - "${PWD}:/var/www/html"
+      - "${COMPOSER_HOME:-$HOME/.config/composer}:${COMPOSER_HOME:-$HOME/.config/composer}"
+      - "${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}"
+    command: http-server dist/phpdoc-vuepress --port 8089 --proxy http://localhost:8089?
+networks:
+  default:
+    driver: bridge
