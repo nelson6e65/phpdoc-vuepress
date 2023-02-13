@@ -3,7 +3,7 @@ module.exports = {
   dest: 'dist/phpdoc-vuepress/',
 
   // Base URL. Useful for GitHub pages.
-  base: '/phpdoc-vuepress/',
+  base: '/',
 
   // Title of your project
   title: 'PHPDoc-VuePress',

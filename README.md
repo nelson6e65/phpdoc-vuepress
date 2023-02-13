@@ -10,7 +10,7 @@
 [![Latest unstable Version](https://img.shields.io/packagist/vpre/nelson6e65/phpdoc-vuepress.svg?label=unstable)](https://packagist.org/packages/nelson6e65/phpdoc-vuepress#dev-master)
 
 [![License](https://img.shields.io/github/license/nelson6e65/phpdoc-vuepress.svg)](LICENSE)
-[![Documentation](http://img.shields.io/badge/📜-Documentation-lightgrey.svg)](https://nelson6e65.github.io/phpdoc-vuepress)
+[![Documentation](http://img.shields.io/badge/📜-Documentation-lightgrey.svg)](https://phpdoc-vuepress.netlify.app/)
 [![Wakatime](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress.svg)](https://wakatime.com/badge/github/nelson6e65/phpdoc-vuepress)
 
 Template for generating your PHP API documentation in a pretty VuePress format.
@@ -32,7 +32,7 @@ This template will generate six VuePress `*.md` files with the DocBlock document
 
 ## Demo
 
-Check a demo of documentation generated with this template in http://nelson6e65.github.io/phpdoc-vuepress/demo/
+Check a demo of documentation generated with this template in https://phpdoc-vuepress.netlify.app/demo
 
 Explore sources of [nelson6e65/phpdoc-vuepress](https://github.com/nelson6e65/phpdoc-vuepress) to use configuration files as guide.
 
