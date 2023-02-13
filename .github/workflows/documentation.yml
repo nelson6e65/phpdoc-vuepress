@@ -230,6 +230,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
+      - name: Install Node.js dependencies
+        run: npm install
+
       - uses: chrnorm/deployment-action@v1.2.0
         id: deployment
         with:
